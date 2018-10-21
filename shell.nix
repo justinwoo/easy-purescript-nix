@@ -1,1 +1,1 @@
-(import ./default.nix).easy
+(import ./default.nix).shell

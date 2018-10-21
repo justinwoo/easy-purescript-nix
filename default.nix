@@ -1,34 +1,24 @@
 let
   pkgs = import <nixpkgs> {};
 
-  purs = import ./purs.nix {};
-  psc-package-simple = import ./psc-package-simple.nix {};
-  purp = import ./purp.nix {};
+  inputs = {
+    purs = import ./purs.nix {};
+    psc-package-simple = import ./psc-package-simple.nix {};
+    purp = import ./purp.nix {};
 
-  dhall-simple = import ./dhall-simple.nix {};
-  dhall-json-simple = import ./dhall-json-simple.nix {};
-  spacchetti-cli = import ./spacchetti-cli.nix {};
+    dhall-simple = import ./dhall-simple.nix {};
+    dhall-json-simple = import ./dhall-json-simple.nix {};
+    spacchetti-cli = import ./spacchetti-cli.nix {};
+  };
+
+  buildInputs = builtins.attrValues inputs;
 in {
-  purs = purs;
-  psc-package-simple = psc-package-simple;
-  purp = purp;
+  inherit (inputs);
+  buildInputs = buildInputs;
 
-  dhall-simple = dhall-simple;
-  dhall-json-simple = dhall-json-simple;
-  spacchetti-cli = spacchetti-cli;
-
-  easy = pkgs.stdenv.mkDerivation {
-    name = "easy-purescript-nix";
+  shell = pkgs.stdenv.mkDerivation {
+    name = "easy-purescript-nix-shell";
     src = ./.;
-
-    buildInputs = [
-      purs
-      psc-package-simple
-      purp
-
-      dhall-simple
-      dhall-json-simple
-      spacchetti-cli
-    ];
+    buildInputs = buildInputs;
   };
 }
