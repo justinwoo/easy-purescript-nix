@@ -14,7 +14,7 @@ Rules:
 Behold:
 
 ```
-> nix-env -f ~/Code/easy-purescript-nix/default.nix -i dhall-simple
+> nix-env -f ~/Code/easy-purescript-nix/default.nix -iA inputs.dhall-simple
 replacing old 'dhall-simple'
 installing 'dhall-simple'
 building '/nix/store/n2q4i6c28vhh6ff302k606lg7abbh998-user-environment.drv'...
@@ -25,6 +25,27 @@ created 504 symlinks in user environment
 
 > dhall version
 1.18.0
+```
+
+Or in your dotfiles instead:
+
+```
+let
+  pkgs = import <nixpkgs> {};
+
+  easyPS = import (pkgs.fetchFromGitHub {
+    owner = "justinwoo";
+    repo = "easy-purescript-nix";
+    rev = "3c61e4e";
+    sha256 = "0182jpx1yvn1570vd9lv92y0rbhyszhjrbg5y4g42rzy5nnyxx4c";
+  });
+in {
+  inherit(easyPS.inputs)
+   purs
+   psc-package-simple
+   purp
+   ;
+}
 ```
 
 ### Why not upstream `purp` and `spacchetti-cli` to nixpkgs?
