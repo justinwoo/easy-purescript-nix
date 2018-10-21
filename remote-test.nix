@@ -4,8 +4,8 @@ let
   remote = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "de9275d9e6635addb5c8448e4ca354a62570fd49";
-    sha256 = "14g2yrfigsp0z87jk4aand8g1w99fsmfsdbg6zrvkmf4nmjhs074";
+    rev = "ee7da7d";
+    sha256 = "19vdqz8045l47in45a8kgw5ygsj3cbhjczbw62ih56dqwxrd2w44";
   });
 in pkgs.stdenv.mkDerivation {
   name = "remote-test";
