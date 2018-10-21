@@ -13,7 +13,8 @@ let
 
   buildInputs = builtins.attrValues inputs;
 in {
-  inherit (inputs);
+  inputs = inputs;
+
   buildInputs = buildInputs;
 
   shell = pkgs.stdenv.mkDerivation {
