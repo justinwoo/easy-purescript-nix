@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "0.3.0.0";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/justinwoo/spacchetti/releases/download/${version}/linux.tar.gz";
+    url = "https://github.com/justinwoo/spacchetti-cli/releases/download/${version}/linux.tar.gz";
     sha256 = "0rdqh7y1yb3wyjaws2alb278h6izifa9adlqzk6sp5yvdjkai7kx";
   };
 
