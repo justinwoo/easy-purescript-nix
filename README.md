@@ -7,6 +7,8 @@ Rules:
 1. Binary downloads, no rebuilding
 2. Should be easy to pull it from remote (could be improved, see [remote-test.nix](./remote-test.nix))
 
+See the blog post about this here: https://qiita.com/kimagure/items/de2a4ff45dd8fe8be4b1
+
 ## Potential questions
 
 ### Porco zio, I love this. How do I install to my system from here?
