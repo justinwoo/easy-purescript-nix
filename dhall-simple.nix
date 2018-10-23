@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/dhall-lang/dhall-haskell/releases/download/${version}/dhall-${version}-x86_64-linux.tar.bz2";
-    sha256 = "0gq5bjpvndf3m1xccrz3vk1hqjl4pkagzb57q69v7544clvij83v";
+    sha256 = "0jvw6ss96xifb21mzpvfjzvaffcnpj0jhpc4rd36cl2r22800qgx";
   };
 
   installPhase = ''
