@@ -14,7 +14,5 @@ pkgs.stdenv.mkDerivation rec {
     tar xf $src -C $out/bin
   '';
 
-  installPhase = ''
-    echo $out/bin
-  '';
+  dontInstall = true;
 }
