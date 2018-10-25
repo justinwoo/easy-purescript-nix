@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "spacchetti";
-  version = "0.3.0.0";
+  version = "0.4.0.0";
 
   src = pkgs.fetchurl {
     url = "https://github.com/justinwoo/spacchetti-cli/releases/download/${version}/linux.tar.gz";
-    sha256 = "0rdqh7y1yb3wyjaws2alb278h6izifa9adlqzk6sp5yvdjkai7kx";
+    sha256 = "0ngp1x85darqx0hlyl9cajjc8gh6lmp3pkpxmsb338rsk72nwx6l";
   };
 
   unpackPhase = ''
