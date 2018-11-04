@@ -9,6 +9,8 @@ let
     dhall-simple = import ./dhall-simple.nix {};
     dhall-json-simple = import ./dhall-json-simple.nix {};
     spacchetti-cli = import ./spacchetti-cli.nix {};
+
+    psc-package2nix = import ./psc-package2nix.nix {};
   };
 
   buildInputs = builtins.attrValues inputs;
