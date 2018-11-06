@@ -9,6 +9,10 @@ Rules:
 
 See the blog post about this here: https://qiita.com/kimagure/items/de2a4ff45dd8fe8be4b1
 
+## Warning
+
+I (Justin) do not use NixOS, so these builds may require extra patching for consumption from NixOS.
+
 ## Potential questions
 
 ### Porco zio, I love this. How do I install to my system from here?
