@@ -17,6 +17,12 @@ Thanks to Pekka (@kaitanie), we have things working on NixOS. So report issues i
 
 ## Potential questions
 
+### Can I see an example of this at work?
+
+I have a setup for react-basic-starter here: <https://github.com/justinwoo/spacchetti-react-basic-starter>
+
+As usual, my vidtracker repo also has lots of usages: <https://github.com/justinwoo/vidtracker/tree/f78b3df57eaf5b122f0a0b51cc4e3c246bf96f88>
+
 ### Porco zio, I love this. How do I install to my system from here?
 
 Behold:
