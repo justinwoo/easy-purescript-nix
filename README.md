@@ -1,4 +1,4 @@
-# Easy PureScript Nix, First Draft
+# Easy PureScript Nix, NixOS Ready™
 
 Improvements welcomed, following two rules:
 
@@ -11,7 +11,9 @@ See the blog post about this here: https://qiita.com/kimagure/items/de2a4ff45dd8
 
 ## Warning
 
-I (Justin) do not use NixOS, so these builds may require extra patching for consumption from NixOS.
+Thanks to Pekka (@kaitanie), we have things working on NixOS. So report issues if things are broken!
+
+*I (Justin) do not use NixOS, so these builds may require extra patching for consumption from NixOS.*
 
 ## Potential questions
 
