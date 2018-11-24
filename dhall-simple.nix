@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "dhall-simple";
-  version = "1.18.0";
+  version = "1.19.0";
 
   src = pkgs.fetchurl {
     url = "https://github.com/dhall-lang/dhall-haskell/releases/download/${version}/dhall-${version}-x86_64-linux.tar.bz2";
-    sha256 = "0jvw6ss96xifb21mzpvfjzvaffcnpj0jhpc4rd36cl2r22800qgx";
+    sha256 = "0vxl0q5lm9h5s8x3xbqqffx8z3c25c65xy5kplzkpdvibjnf2frp";
   };
 
   installPhase = ''
