@@ -11,6 +11,12 @@ Rules:
 
 See the blog post about this here: https://qiita.com/kimagure/items/de2a4ff45dd8fe8be4b1
 
+## Example usage
+
+This repository uses Easy-PureScript-Nix for its setup:
+
+<https://github.com/justinwoo/spacchetti-react-basic-starter>
+
 ## Warning
 
 Thanks to Pekka (@kaitanie), we have things working on NixOS. So report issues if things are broken!
