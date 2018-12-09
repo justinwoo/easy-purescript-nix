@@ -11,7 +11,10 @@ test:
 	purp version
 
 	which dhall
+	dhall version
+
 	which dhall-to-json
+	dhall-to-json --version
 
 	which spacchetti
 	spacchetti version
