@@ -17,9 +17,14 @@ in pkgs.stdenv.mkDerivation rec {
   unpackPhase = ''
     mkdir -p $out/bin
     tar xf $src -C $out/bin
-    chmod u+w $out/bin/purp
-    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $out/bin/purp
-    chmod u-w $out/bin/purp
+
+    PURP=$out/bin/purp
+    chmod u+w $PURP
+    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PURP
+    chmod u-w $PURP
+
+    mkdir -p $out/etc/bash_completion.d/
+    $PURP --bash-completion-script $PURP > $out/etc/bash_completion.d/purp-completion.bash
   '';
 
   dontInstall = true;
