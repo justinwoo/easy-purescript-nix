@@ -16,9 +16,15 @@ in pkgs.stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    install -D -m555 -T psc-package $out/bin/psc-package
-    chmod u+w $out/bin/psc-package
-    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $out/bin/psc-package
-    chmod u-w $out/bin/psc-package
+
+    PSC_PACKAGE=$out/bin/psc-package
+
+    install -D -m555 -T psc-package $PSC_PACKAGE
+    chmod u+w $PSC_PACKAGE
+    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PSC_PACKAGE
+    chmod u-w $PSC_PACKAGE
+
+    mkdir -p $out/etc/bash_completion.d/
+    $PSC_PACKAGE --bash-completion-script $PSC_PACKAGE > $out/etc/bash_completion.d/psc-package-completion.bash
   '';
 }
