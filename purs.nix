@@ -18,9 +18,14 @@ in pkgs.stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    install -D -m555 -T purs $out/bin/purs
-    chmod u+w $out/bin/purs
-    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $out/bin/purs
-    chmod u-w $out/bin/purs
+    PURS="$out/bin/purs"
+
+    install -D -m555 -T purs $PURS
+    chmod u+w $PURS
+    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PURS
+    chmod u-w $PURS
+
+    mkdir -p $out/etc/bash_completion.d/
+    $PURS --bash-completion-script $PURS > $out/etc/bash_completion.d/purs-completion.bash
   '';
 }
