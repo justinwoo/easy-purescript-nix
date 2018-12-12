@@ -15,9 +15,15 @@ pkgs.stdenv.mkDerivation rec {
   unpackPhase = ''
     mkdir -p $out/bin
     tar xf $src -C $out/bin
-    chmod u+w $out/bin/spacchetti
-    patchelf --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath "${pkgs.gmp}/lib" $out/bin/spacchetti
-    chmod u-w $out/bin/spacchetti
+
+    SPACCHETTI=$out/bin/spacchetti
+
+    chmod u+w $SPACCHETTI
+    patchelf --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath "${pkgs.gmp}/lib" $SPACCHETTI
+    chmod u-w $SPACCHETTI
+
+    mkdir -p $out/etc/bash_completion.d/
+    $SPACCHETTI --bash-completion-script $SPACCHETTI > $out/etc/bash_completion.d/spacchetti-cli-completion.bash
   '';
 
   dontInstall = true;
