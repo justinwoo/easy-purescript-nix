@@ -70,6 +70,6 @@ in {
 }
 ```
 
-### Why not upstream `purp` and `spacchetti-cli` to nixpkgs?
+### Why not upstream `purp` and `spacchetti-cli/spago` to nixpkgs?
 
 Surely someone else will make a PR if they want it, but I am unlikely to use any nixpkgs version currently.
