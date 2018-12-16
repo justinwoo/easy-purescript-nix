@@ -12,6 +12,8 @@ let
       dhall-json-simple;
     spacchetti-cli = import ./spacchetti-cli.nix { inherit pkgs; };
 
+    spago = import ./spago.nix { inherit pkgs; };
+
     psc-package2nix = import ./psc-package2nix.nix { inherit pkgs; };
   };
 

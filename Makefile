@@ -18,3 +18,6 @@ test:
 
 	which spacchetti
 	spacchetti version
+
+	which spago
+	spago version

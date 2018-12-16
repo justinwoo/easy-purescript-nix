@@ -13,6 +13,9 @@ pkgs.stdenv.mkDerivation rec {
   dontStrip = true;
 
   unpackPhase = ''
+    echo 'WARNING: Spacchetti-CLI is now Spago.'
+    echo 'You should install the Spago derivation instead.'
+    echo 'See changelog here: https://github.com/spacchetti/spago/releases/tag/0.6.0.0'
     mkdir -p $out/bin
     tar xf $src -C $out/bin
 
