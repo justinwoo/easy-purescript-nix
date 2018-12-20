@@ -2,9 +2,14 @@ let
   pkgs = import <nixpkgs> {};
   easy-dhall = import ./easy-dhall.nix { inherit pkgs; };
 
-  inputs = {
+  inputs = rec {
     purs = import ./purs.nix { inherit pkgs; };
+    purs-simple = purs;
+    purescript = purs;
+
     psc-package-simple = import ./psc-package-simple.nix { inherit pkgs; };
+    psc-package = psc-package-simple;
+
     purp = import ./purp.nix { inherit pkgs; };
 
     inherit (easy-dhall)
@@ -18,7 +23,7 @@ let
   };
 
   buildInputs = builtins.attrValues inputs;
-in {
+in inputs // {
   inputs = inputs;
 
   buildInputs = buildInputs;
