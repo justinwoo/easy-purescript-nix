@@ -20,6 +20,8 @@ let
     spago = import ./spago.nix { inherit pkgs; };
 
     psc-package2nix = import ./psc-package2nix.nix { inherit pkgs; };
+
+    zephyr = import ./zephyr.nix { inherit pkgs; };
   };
 
   buildInputs = builtins.attrValues inputs;
