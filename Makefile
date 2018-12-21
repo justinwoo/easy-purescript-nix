@@ -21,3 +21,6 @@ test:
 
 	which spago
 	spago version
+
+	which zephyr
+	zephyr --version
