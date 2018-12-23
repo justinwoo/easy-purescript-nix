@@ -30,9 +30,7 @@ in inputs // {
 
   buildInputs = buildInputs;
 
-  shell = pkgs.stdenv.mkDerivation {
-    name = "easy-purescript-nix-shell";
-    src = ./.;
+  shell = pkgs.runCommand "easy-purescript-nix-shell" {
     buildInputs = buildInputs;
-  };
+  } "";
 }
