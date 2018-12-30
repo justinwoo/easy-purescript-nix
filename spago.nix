@@ -14,7 +14,7 @@ let
   platform =
     if pkgs.stdenv.isDarwin
       then "osx"
-      else "linux64";
+      else "linux";
 
   sha256 =
     if pkgs.stdenv.isDarwin
