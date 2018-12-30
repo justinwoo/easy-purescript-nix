@@ -12,7 +12,7 @@ let
       then "13fqpi2c6k5fw2cnzxghrlqpznvlwdcf3yizmf9zbz2zfmfihmig"
       else "01az5127g7jpznsjvpkrl59i922fc5i219qdvsrimzimrv08mr18";
 
-  patchelf =
+  patchelf = libPath :
     if pkgs.stdenv.isDarwin
       then ""
       else
@@ -45,7 +45,7 @@ in pkgs.stdenv.mkDerivation rec {
     PURS="$out/bin/purs"
 
     install -D -m555 -T purs $PURS
-    ${patchelf}
+    ${patchelf libPath}
 
     mkdir -p $out/etc/bash_completion.d/
     $PURS --bash-completion-script $PURS > $out/etc/bash_completion.d/purs-completion.bash
