@@ -3,11 +3,11 @@
 let dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
 in pkgs.stdenv.mkDerivation rec {
   name = "purs-simple";
-  version = "v0.12.1";
+  version = "v0.12.2";
 
   src = pkgs.fetchurl {
     url = "https://github.com/purescript/purescript/releases/download/${version}/linux64.tar.gz";
-    sha256 = "01az5127g7jpznsjvpkrl59i922fc5i219qdvsrimzimrv08mr18";
+    sha256 = "0wzsl3yqz9gmsi77a7m73y5g8g8k7hnmd3i2f0gf2k8wx32ak43a";
   };
 
   buildInputs = [ pkgs.zlib
