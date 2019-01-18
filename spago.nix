@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "spago";
-  version = "0.6.0.0";
+  version = "0.6.2.1";
 
   src = pkgs.fetchurl {
     url = "https://github.com/spacchetti/spago/releases/download/${version}/linux.tar.gz";
-    sha256 = "13jdki193pif3w6lrzizil8s8az3gs9bg0jzx98ar5sy9d8iikrm";
+    sha256 = "0ljmfjlbppyab009a8g3rzr044mh38qasw2wcngd7s788q9vcjgl";
   };
 
   buildInputs = [
