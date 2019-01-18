@@ -10,27 +10,22 @@ let
           patchelf --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath ${libPath} $SPAGO
           chmod u-w $SPAGO
         '';
-
-  platform =
-    if pkgs.stdenv.isDarwin
-      then "osx"
-      else "linux";
-
-  sha256 =
-    if pkgs.stdenv.isDarwin
-      then "0h44sjxjiklr9851pwv85rpaqc7yck6q41d3bfxcdn2kq00j0dha"
-      else "13jdki193pif3w6lrzizil8s8az3gs9bg0jzx98ar5sy9d8iikrm";
-
 in
 
   pkgs.stdenv.mkDerivation rec {
     name = "spago";
     version = "0.6.0.0";
 
-    src = pkgs.fetchurl {
-      url = "https://github.com/spacchetti/spago/releases/download/${version}/${platform}.tar.gz";
-      sha256 = sha256;
-    };
+    src =
+      if pkgs.stdenv.isDarwin
+        then pkgs.fetchurl
+              { url = "https://github.com/spacchetti/spago/releases/download/0.6.0.0/osx.tar.gz";
+                sha256 =  "0h44sjxjiklr9851pwv85rpaqc7yck6q41d3bfxcdn2kq00j0dha";
+              }
+        else pkgs.fetchurl
+              { url = "https://github.com/spacchetti/spago/releases/download/0.6.0.0/linux.tar.gz";
+                sha256 =  "13jdki193pif3w6lrzizil8s8az3gs9bg0jzx98ar5sy9d8iikrm";
+              };
 
     buildInputs = [
       pkgs.gmp

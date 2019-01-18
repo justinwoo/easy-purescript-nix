@@ -2,15 +2,6 @@
 
 let
   dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
-  platform =
-    if pkgs.stdenv.isDarwin
-      then "macos"
-      else "linux64";
-
-  sha256 =
-    if pkgs.stdenv.isDarwin
-      then "1bll735777098anx30rgw1yyk8mjxyj729laimbdzkp64ckzzsiv"
-      else "0wzsl3yqz9gmsi77a7m73y5g8g8k7hnmd3i2f0gf2k8wx32ak43a";
 
   patchelf = libPath :
     if pkgs.stdenv.isDarwin
@@ -26,10 +17,16 @@ in pkgs.stdenv.mkDerivation rec {
   name = "purs-simple";
   version = "v0.12.2";
 
-  src = pkgs.fetchurl {
-    url = "https://github.com/purescript/purescript/releases/download/${version}/${platform}.tar.gz";
-    sha256 = sha256;
-  };
+  src =
+    if pkgs.stdenv.isDarwin
+      then pkgs.fetchurl
+        { url = "https://github.com/purescript/purescript/releases/download/v0.12.2/macos.tar.gz";
+          sha256 =  "1bll735777098anx30rgw1yyk8mjxyj729laimbdzkp64ckzzsiv";
+        }
+      else pkgs.fetchurl
+        { url = "https://github.com/purescript/purescript/releases/download/v0.12.2/linux64.tar.gz";
+          sha256 =  "0wzsl3yqz9gmsi77a7m73y5g8g8k7hnmd3i2f0gf2k8wx32ak43a";
+        };
 
 
   buildInputs = [ pkgs.zlib
