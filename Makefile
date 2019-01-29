@@ -24,3 +24,7 @@ test:
 
 	which zephyr
 	zephyr --version
+
+	which psc-package2nix
+	which pp2n
+	pp2n
