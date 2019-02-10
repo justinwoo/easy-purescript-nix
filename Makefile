@@ -8,7 +8,7 @@ test:
 	psc-package --version
 
 	which purp
-	purp version
+	purp
 
 	which dhall
 	dhall version
