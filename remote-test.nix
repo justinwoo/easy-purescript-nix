@@ -3,8 +3,8 @@ let
   remote = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "2f56e0895959db39293942786d4d346524360e5b";
-    sha256 = "0vaqn0v6abffzma9gfv5cwknz4kpc3kj50siia5cv2mp752b8w98";
+    rev = "15ae0484841c4d984fdb59d9af3d13902777f5ea";
+    sha256 = "08505jj83qnc9n7c98y6sb0cdyczzgmpi1cyjbg8jl9l648537ml";
   });
 in pkgs.runCommand "easy-purescript-remote-test" {
   buildInputs = remote.buildInputs;
