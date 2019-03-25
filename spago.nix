@@ -14,17 +14,17 @@ in
 
   pkgs.stdenv.mkDerivation rec {
     name = "spago";
-    version = "0.7.0.0";
+    version = "0.7.2.0";
 
     src =
       if pkgs.stdenv.isDarwin
       then pkgs.fetchurl {
-        url = "https://github.com/spacchetti/spago/releases/download/0.7.0.0/osx.tar.gz";
-        sha256 = "10kb92ylk92hfgjzjvj5rvynmfdd2bmrs6bax4a7q2k513zfb2sp";
+        url = "https://github.com/spacchetti/spago/releases/download/0.7.2.0/osx.tar.gz";
+        sha256 = "0ggf96ka37ay8lmdg2aa71z5qpl2yb4k36dkjn9s04hp22nmqbqf";
       }
       else pkgs.fetchurl {
-        url = "https://github.com/spacchetti/spago/releases/download/0.7.0.0/linux.tar.gz";
-        sha256 = "083lc4i5fqph01bvirbm7y2vza2r9y644h5bfpdkb122skzf904a";
+        url = "https://github.com/spacchetti/spago/releases/download/0.7.2.0/linux.tar.gz";
+        sha256 = "0lj13j0qpafll8pk2bqsw3gil6p883jyb1pgbl9ld35pfa0mvfgv";
       };
 
     buildInputs = [
