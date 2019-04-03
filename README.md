@@ -51,7 +51,7 @@ created 504 symlinks in user environment
 
 Or in your dotfiles instead:
 
-```
+```nix
 let
   pkgs = import <nixpkgs> {};
 
