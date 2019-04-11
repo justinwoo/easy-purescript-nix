@@ -36,15 +36,11 @@ let
     buildInputs = [ purs ];
   };
 in
-{
-  package = nodeEnv.buildNodePackage (args // {
-    inherit src bowerComponents;
+nodeEnv.buildNodePackage (args // {
+  inherit src bowerComponents;
 
-    fixupPhase = ''
-      cp --reflink=auto --no-preserve=mode -R $bowerComponents/bower_components .
-      npm run build
-    '';
-  });
-
-  shell = nodeEnv.buildNodeShell args;
-}
+  fixupPhase = ''
+    cp --reflink=auto --no-preserve=mode -R $bowerComponents/bower_components .
+    npm run build
+  '';
+})
