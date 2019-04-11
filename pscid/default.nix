@@ -9,6 +9,7 @@ let
 
   # Generated with node2nix
   # https://github.com/svanderburg/node2nix
+  # (node2nix --lock package-lock.json --nodejs-10)
   nodeModules = import ./node-modules.nix {
     inherit (pkgs) fetchurl fetchgit;
   };
@@ -31,7 +32,7 @@ let
       license = "LGPL-3.0";
     };
     production = true;
-    bypassCache = false;
+    bypassCache = true;
     dependencies = nodeModules;
     buildInputs = [ purs ];
   };

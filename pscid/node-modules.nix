@@ -541,13 +541,13 @@ let
         sha512 = "3sUr9aq5OfSg2S9pNtPA9hL1FVEAjvfOC4leW0SNf/mpnaakz2a9femSd6LqAww2RaFctwyf1lCqnTHuF1rxDg==";
       };
     };
-    "semver-5.7.0" = {
+    "semver-5.6.0" = {
       name = "semver";
       packageName = "semver";
-      version = "5.7.0";
+      version = "5.6.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/semver/-/semver-5.7.0.tgz";
-        sha512 = "Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==";
+        url = "https://registry.npmjs.org/semver/-/semver-5.6.0.tgz";
+        sha512 = "RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==";
       };
     };
     "set-blocking-2.0.0" = {
@@ -771,10 +771,8 @@ in
   })
   sources."code-point-at-1.1.0"
   sources."concat-map-0.0.1"
-  sources."cross-spawn-5.1.0"
   sources."decamelize-1.2.0"
   sources."error-ex-1.3.2"
-  sources."execa-0.7.0"
   sources."find-up-2.1.0"
   sources."fs.realpath-1.0.0"
   sources."gaze-1.1.3"
@@ -804,7 +802,12 @@ in
   sources."npm-run-path-2.0.2"
   sources."number-is-nan-1.0.1"
   sources."once-1.4.0"
-  sources."os-locale-2.1.0"
+  (sources."os-locale-2.1.0" // {
+    dependencies = [
+      sources."cross-spawn-5.1.0"
+      sources."execa-0.7.0"
+    ];
+  })
   sources."p-finally-1.0.0"
   sources."p-limit-1.3.0"
   sources."p-locate-2.0.0"
@@ -822,7 +825,7 @@ in
   sources."require-directory-2.1.1"
   sources."require-main-filename-1.0.1"
   sources."resolve-1.10.0"
-  sources."semver-5.7.0"
+  sources."semver-5.6.0"
   sources."set-blocking-2.0.0"
   sources."shebang-command-1.2.0"
   sources."shebang-regex-1.0.0"
