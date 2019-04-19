@@ -1,6 +1,6 @@
 # Easy PureScript Nix, NixOS Ready™
 
-[![Build Status](https://travis-ci.org/justinwoo/easy-purescript-nix.svg?branch=master)](https://travis-ci.org/justinwoo/easy-purescript-nix)
+[![Build Status](https://travis-ci.com/justinwoo/easy-purescript-nix.svg?branch=master)](https://travis-ci.com/justinwoo/easy-purescript-nix)
 
 Improvements welcomed, following two rules:
 
