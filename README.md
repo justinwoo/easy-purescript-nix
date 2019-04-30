@@ -9,7 +9,9 @@ Rules:
 1. Binary downloads, no rebuilding
 2. Should be easy to pull it from remote (could be improved, see [remote-test.nix](./remote-test.nix))
 
-See the blog post about this here: https://qiita.com/kimagure/items/de2a4ff45dd8fe8be4b1
+See the blog post about this here: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2018-10-24-using-purescript-easily-with-nix.md>
+
+Raison d'etre: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2019-04-29-why-easy-purescript-nix.md>
 
 ## Example usage
 
