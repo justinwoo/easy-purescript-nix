@@ -2,6 +2,7 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "zephyr";
+
   version = "v0.2.1";
 
   src = pkgs.fetchurl {
@@ -9,12 +10,10 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
   };
 
-  buildInputs = [
-    pkgs.gmp
-    pkgs.zlib
-    pkgs.ncurses5
-  ];
+  buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
+
   libPath = pkgs.lib.makeLibraryPath buildInputs;
+
   dontStrip = true;
 
   unpackPhase = ''

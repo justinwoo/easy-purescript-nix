@@ -1,8 +1,11 @@
 { pkgs ? import <nixpkgs> {} }:
 
-let dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
+let
+  dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
+
 in pkgs.stdenv.mkDerivation rec {
   name = "psc-package-simple";
+
   version = "v0.4.2";
 
   src = pkgs.fetchurl {
@@ -11,7 +14,9 @@ in pkgs.stdenv.mkDerivation rec {
   };
 
   buildInputs = [ pkgs.gmp ];
+
   libPath = pkgs.lib.makeLibraryPath buildInputs;
+
   dontStrip = true;
 
   installPhase = ''

@@ -2,6 +2,7 @@
 
 pkgs.stdenv.mkDerivation rec {
   name = "spacchetti";
+
   version = "0.5.0.0";
 
   src = pkgs.fetchurl {
@@ -10,6 +11,7 @@ pkgs.stdenv.mkDerivation rec {
   };
 
   buildInputs = [ pkgs.gmp ];
+
   dontStrip = true;
 
   unpackPhase = ''
