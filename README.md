@@ -57,8 +57,8 @@ let
   easyPS = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "993f63359b64db080061b274e4688e3b80c4f68e";
-    sha256 = "18b7fmmxkg38y1av9kfgcv2rikdlji51ya5b9p7sy3aml2hprmi5";
+    rev = "bad807ade1314420a52c589dbc3d64d3c9b38480";
+    sha256 = "099dpxrpch8cgy310svrpdcad2y1qdl6l782mjpcgn3rqgj62vsf";
   });
 in {
   inherit(easyPS.inputs)
