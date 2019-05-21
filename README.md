@@ -17,7 +17,7 @@ Raison d'etre: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/201
 
 This repository uses Easy-PureScript-Nix for its setup:
 
-<https://github.com/justinwoo/spacchetti-react-basic-starter>
+<https://github.com/justinwoo/vidtracker>
 
 ## Warning
 
