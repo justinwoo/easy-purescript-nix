@@ -1,47 +1,25 @@
-{ pkgs, nodeEnv, purs }:
+{ pkgs, purs }:
+
 let
-  src = pkgs.fetchFromGitHub {
-    owner = "kRITZCREEK";
-    repo = "pscid";
-    rev = "6bf65c5368fd997d980b7528f6fe39bd92fcc07a";
-    sha256 = "0s0s065gi859n9fbvwm0v2p73vqd99vcax9zfhg9ip00k7aswn36";
-  };
+  src = import ./src.nix { inherit pkgs; };
 
-  # Generated with node2nix
-  # https://github.com/svanderburg/node2nix
-  # (node2nix --lock package-lock.json --nodejs-10)
-  nodeModules = import ./node-modules.nix {
-    inherit (pkgs) fetchurl fetchgit;
-  };
+  package = (import ./generated/node2nix-default.nix { inherit pkgs; }).package;
 
-  # Generated with bower2nix
-  # https://github.com/rvl/bower2nix
   bowerComponents = pkgs.buildBowerComponents {
     name = "pscid";
-    generated = ./bower-components.nix;
+    generated = ./generated/bower2nix-bower-components.nix;
     inherit src;
-  };
-
-  args = {
-    name = "pscid";
-    packageName = "pscid";
-    version = "2.6.0";
-    inherit src;
-    meta = {
-      description = "A lightweight editor experience for PureScript development";
-      license = "LGPL-3.0";
-    };
-    production = true;
-    bypassCache = true;
-    dependencies = nodeModules;
-    buildInputs = [ purs ];
   };
 in
-nodeEnv.buildNodePackage (args // {
+
+package.overrideAttrs (oldAttrs: rec {
   inherit src bowerComponents;
+
+  buildInputs = oldAttrs.buildInputs ++ [ purs ];
 
   fixupPhase = ''
     cp --reflink=auto --no-preserve=mode -R $bowerComponents/bower_components .
+
     npm run build
   '';
 })
