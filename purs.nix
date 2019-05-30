@@ -14,16 +14,16 @@ let
 in pkgs.stdenv.mkDerivation rec {
   name = "purs-simple";
 
-  version = "v0.12.5";
+  version = "v0.13.0";
 
   src = if pkgs.stdenv.isDarwin
     then pkgs.fetchurl {
-      url = "https://github.com/purescript/purescript/releases/download/v0.12.5/macos.tar.gz";
-      sha256 = "15j9lkrl15dicx37bmh0199b3qdixig7w24wvdzi20jqbacz8nkn";
+      url = "https://github.com/purescript/purescript/releases/download/v0.13.0/macos.tar.gz";
+      sha256 = "0xpisy38gj6fgyyzm6fdl0v819dhjmil4634xxangvhvs7jf5il0";
     }
     else pkgs.fetchurl {
-      url = "https://github.com/purescript/purescript/releases/download/v0.12.5/linux64.tar.gz";
-      sha256 = "07dva5gxq77g787krscv4dsz5088fzkvpmm9fwxw9a59jszzs7kq";
+      url = "https://github.com/purescript/purescript/releases/download/v0.13.0/linux64.tar.gz";
+      sha256 = "06g5q69yv6c3alq9vr8zjqqzamlii7xf6vj9j52akjq5lww214ba";
     };
 
   buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
