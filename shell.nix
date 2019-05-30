@@ -1,1 +1,3 @@
-(import ./default.nix).shell
+{ pkgs ? import <nixpkgs> {} }:
+
+(import ./default.nix { inherit pkgs; }).shell
