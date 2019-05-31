@@ -1,9 +1,27 @@
-{ pkgs, purs }:
+{
+  pkgs ? import <nixpkgs> { inherit system; },
+  system ? builtins.currentSystem,
+  nodejs ? pkgs."nodejs-10_x",
+  purs
+}:
 
 let
   src = import ./src.nix { inherit pkgs; };
 
-  package = (import ./generated/node2nix-default.nix { inherit pkgs; }).package;
+  nodeEnv = import ./generated/node2nix-node-env.nix {
+    inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
+    inherit nodejs;
+    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
+  };
+
+  node2nix-output = import ./generated/node2nix-node-modules.nix {
+    inherit (pkgs) fetchurl fetchgit;
+    inherit nodeEnv;
+  };
+
+  args = node2nix-output.args;
+
+  package = nodeEnv.buildNodePackage (args // { inherit src; });
 
   bowerComponents = pkgs.buildBowerComponents {
     name = "pscid";
@@ -13,7 +31,7 @@ let
 in
 
 package.overrideAttrs (oldAttrs: rec {
-  inherit src bowerComponents;
+  inherit bowerComponents;
 
   buildInputs = oldAttrs.buildInputs ++ [ purs ];
 

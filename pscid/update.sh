@@ -5,7 +5,7 @@
 script_dir=$(dirname "$(readlink -f "$BASH_SOURCE")")
 
 # script
-# $script_dir/update-revision.sh
+$script_dir/update-revision.sh
 
 src_dir=$(nix-build --quiet $script_dir/src.nix)
 
