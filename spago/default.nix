@@ -9,20 +9,15 @@ let
           chmod u-w $SPAGO
         '';
 
+  revisions = builtins.fromJSON (builtins.readFile ./revision.json);
 in pkgs.stdenv.mkDerivation rec {
   name = "spago";
 
-  version = "0.8.0.0";
+  version = revisions.version;
 
   src = if pkgs.stdenv.isDarwin
-    then pkgs.fetchurl {
-      url = "https://github.com/spacchetti/spago/releases/download/0.8.0.0/osx.tar.gz";
-      sha256 = "1dnkjw5h9fyp43gj70z07cwah2hz5cg0krxmjri7h87zp7mc9b17";
-    }
-    else pkgs.fetchurl {
-      url = "https://github.com/spacchetti/spago/releases/download/0.8.0.0/linux.tar.gz";
-      sha256 = "14vgjgkg67q4kjgkbn61x9d3qv8wi5ii42nfg84qdmvg4km91pcn";
-    };
+    then pkgs.fetchurl { inherit (revisions.mac) url sha256; }
+    else pkgs.fetchurl { inherit (revisions.linux) url sha256; };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 pkgs.stdenv.cc.cc.lib ];
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.8.1.0",
+  "linux": {
+    "url": "https://github.com/spacchetti/spago/releases/download/0.8.1.0/linux.tar.gz",
+    "sha256": "1q86g9497dmgqbx55sxls0j58qbgrvvwfxggfnrz6qhamb7zck0g"
+  },
+  "mac": {
+    "url": "https://github.com/spacchetti/spago/releases/download/0.8.1.0/osx.tar.gz",
+    "sha256": "0zhl06alqrb726lhy0x8zv9db6kphadg4jw6fh0grww0qikfj838"
+  }
+}
