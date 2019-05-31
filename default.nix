@@ -26,10 +26,6 @@ let
 
     inherit (easy-dhall) dhall-simple dhall-json-simple;
 
-    spacchetti-cli = import ./spacchetti-cli {
-      inherit pkgs;
-    };
-
     spago = import ./spago {
       inherit pkgs;
     };
