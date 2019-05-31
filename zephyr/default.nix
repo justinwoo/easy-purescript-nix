@@ -1,14 +1,15 @@
 { pkgs ? import <nixpkgs> {} }:
 
-pkgs.stdenv.mkDerivation rec {
+let
+  revisions = builtins.fromJSON (builtins.readFile ./revision.json);
+in pkgs.stdenv.mkDerivation rec {
   name = "zephyr";
 
-  version = "v0.2.1";
+  version = revisions.version;
 
-  src = pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/${version}/linux64.tar.gz";
-    sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
-  };
+  src = if pkgs.stdenv.isDarwin
+    then pkgs.fetchurl { inherit (revisions.mac) url sha256; }
+    else pkgs.fetchurl { inherit (revisions.linux) url sha256; };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
 

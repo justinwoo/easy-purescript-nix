@@ -1,0 +1,11 @@
+{
+  "version": "v0.2.1",
+  "linux": {
+    "url": "https://github.com/coot/zephyr/releases/download/v0.2.1/linux64.tar.gz",
+    "sha256": "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk"
+  },
+  "mac": {
+    "url": "https://github.com/coot/zephyr/releases/download/v0.2.1/macos.tar.gz",
+    "sha256": "0zwdsrs7r6ff534wrar32lk39fjai1jj4dxz4bjh3yhw63lvdqfn"
+  }
+}
