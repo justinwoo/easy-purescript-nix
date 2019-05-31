@@ -1,0 +1,11 @@
+{
+  "version": "v0.5.1",
+  "linux": {
+    "url": "https://github.com/purescript/psc-package/releases/download/v0.5.1/linux64.tar.gz",
+    "sha256": "0nffiqhfdfkg0i9hgz3vhnjrwsb4gg912rmsn2gdfgbh1m44k5df"
+  },
+  "mac": {
+    "url": "https://github.com/purescript/psc-package/releases/download/v0.5.1/macos.tar.gz",
+    "sha256": "0h9n86kydxpa4qvkvf078zjqxazwxv9pvasf2rq7avdhr1asnppi"
+  }
+}

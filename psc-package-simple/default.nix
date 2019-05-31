@@ -3,15 +3,15 @@
 let
   dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
 
+  revisions = builtins.fromJSON (builtins.readFile ./revision.json);
 in pkgs.stdenv.mkDerivation rec {
   name = "psc-package-simple";
 
-  version = "v0.4.2";
+  version = revisions.version;
 
-  src = pkgs.fetchurl {
-    url = "https://github.com/purescript/psc-package/releases/download/${version}/linux64.tar.gz";
-    sha256 = "0h8jkxqxi44vrzwl1c5zddxjxqbzkwgmn2m7gxlgs019xlsmml4w";
-  };
+  src = if pkgs.stdenv.isDarwin
+    then pkgs.fetchurl { inherit (revisions.mac) url sha256; }
+    else pkgs.fetchurl { inherit (revisions.linux) url sha256; };
 
   buildInputs = [ pkgs.gmp ];
 
