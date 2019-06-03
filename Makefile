@@ -1,5 +1,5 @@
 default:
-	nix-shell --run 'make test'
+	nix-shell ci.nix --run 'make test'
 test:
 	which purs
 	purs --version
@@ -15,9 +15,6 @@ test:
 
 	which dhall-to-json
 	dhall-to-json --version
-
-	which spacchetti
-	spacchetti version
 
 	which spago
 	spago version
