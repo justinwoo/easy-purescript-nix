@@ -48,6 +48,10 @@ let
       inherit pkgs;
     };
 
+    spago2nix = import ./spago2nix.nix {
+      inherit pkgs;
+    };
+
     zephyr = import ./zephyr.nix {
       inherit pkgs;
     };
