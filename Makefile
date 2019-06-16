@@ -25,3 +25,6 @@ test:
 	which psc-package2nix
 	which pp2n
 	pp2n
+
+	which spago2nix
+	spago2nix
