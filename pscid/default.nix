@@ -3,8 +3,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "pscid";
-    rev = "a4b698f877a73cbc3a552f4d67a8a77e280509f5";
-    sha256 = "1xjs2q23x16h6zxkl6lwh2z8z88cwwnnbayymqmi347ki8g6hjmj";
+    rev = "8e80848a04d72da69ff20cacda302ee742ba19d4";
+    sha256 = "017b4n8n2v6chlb00v11xgadprbqxhxyhkxnh49xig2r9k7x0vbv";
   };
 
   # Generated with node2nix
