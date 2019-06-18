@@ -1,10 +1,10 @@
 { pkgs, nodeEnv, purs }:
 let
   src = pkgs.fetchFromGitHub {
-    owner = "kRITZCREEK";
+    owner = "justinwoo";
     repo = "pscid";
-    rev = "6bf65c5368fd997d980b7528f6fe39bd92fcc07a";
-    sha256 = "0s0s065gi859n9fbvwm0v2p73vqd99vcax9zfhg9ip00k7aswn36";
+    rev = "8e80848a04d72da69ff20cacda302ee742ba19d4";
+    sha256 = "017b4n8n2v6chlb00v11xgadprbqxhxyhkxnh49xig2r9k7x0vbv";
   };
 
   # Generated with node2nix
@@ -12,14 +12,6 @@ let
   # (node2nix --lock package-lock.json --nodejs-10)
   nodeModules = import ./node-modules.nix {
     inherit (pkgs) fetchurl fetchgit;
-  };
-
-  # Generated with bower2nix
-  # https://github.com/rvl/bower2nix
-  bowerComponents = pkgs.buildBowerComponents {
-    name = "pscid";
-    generated = ./bower-components.nix;
-    inherit src;
   };
 
   args = {
@@ -37,11 +29,4 @@ let
     buildInputs = [ purs ];
   };
 in
-nodeEnv.buildNodePackage (args // {
-  inherit src bowerComponents;
-
-  fixupPhase = ''
-    cp --reflink=auto --no-preserve=mode -R $bowerComponents/bower_components .
-    npm run build
-  '';
-})
+nodeEnv.buildNodePackage args
