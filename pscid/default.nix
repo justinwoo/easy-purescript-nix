@@ -1,10 +1,10 @@
 { pkgs, nodeEnv, purs }:
 let
   src = pkgs.fetchFromGitHub {
-    owner = "kRITZCREEK";
+    owner = "justinwoo";
     repo = "pscid";
-    rev = "6bf65c5368fd997d980b7528f6fe39bd92fcc07a";
-    sha256 = "0s0s065gi859n9fbvwm0v2p73vqd99vcax9zfhg9ip00k7aswn36";
+    rev = "a4b698f877a73cbc3a552f4d67a8a77e280509f5";
+    sha256 = "1xjs2q23x16h6zxkl6lwh2z8z88cwwnnbayymqmi347ki8g6hjmj";
   };
 
   # Generated with node2nix
