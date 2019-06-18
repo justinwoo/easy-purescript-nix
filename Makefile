@@ -28,3 +28,6 @@ test:
 
 	which spago2nix
 	spago2nix
+
+	which pscid
+	pscid --help
