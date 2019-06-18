@@ -14,14 +14,6 @@ let
     inherit (pkgs) fetchurl fetchgit;
   };
 
-  # Generated with bower2nix
-  # https://github.com/rvl/bower2nix
-  bowerComponents = pkgs.buildBowerComponents {
-    name = "pscid";
-    generated = ./bower-components.nix;
-    inherit src;
-  };
-
   args = {
     name = "pscid";
     packageName = "pscid";
@@ -37,11 +29,4 @@ let
     buildInputs = [ purs ];
   };
 in
-nodeEnv.buildNodePackage (args // {
-  inherit src bowerComponents;
-
-  fixupPhase = ''
-    cp --reflink=auto --no-preserve=mode -R $bowerComponents/bower_components .
-    npm run build
-  '';
-})
+nodeEnv.buildNodePackage args
