@@ -3,8 +3,8 @@
 import (pkgs.fetchFromGitHub {
   owner = "justinwoo";
   repo = "psc-package2nix";
-  rev = "6e8f6dc6dea896c71b30cc88a2d95d6d1e48a6f0";
-  sha256 = "0fa6zaxxmqxva1xmnap9ng7b90zr9a55x1l5xk8igdw2nldqfa46";
+  rev = "da2368886961e08c5f0b5b3f78aa485fed116d8e";
+  sha256 = "05akkd3p9hs03iia9g2swscms7sd0pviflj8rjq1hiak8ajgx6qm";
 }) {
   inherit pkgs;
 }
