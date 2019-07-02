@@ -4,9 +4,11 @@ let
   remote = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "e3501174123c884d5878b42a48e361aa113cdead";
-    sha256 = "1c28ml262qnh7c1rsz86gnmrj9k9gi35rxh2mx1mwr2ac5dl213a";
-  });
+    rev = "7d072cef5ad9dc33a9a9f1b7fcf8ff083ff484b3";
+    sha256 = "0974wrnp8rnmj1wzaxwlmk5mf1vxdbrvjc1h8jgm9j5686qn0mna";
+  }) {
+    inherit pkgs;
+  };
 
 in pkgs.runCommand "easy-purescript-remote-test" {
   buildInputs = remote.buildInputs;

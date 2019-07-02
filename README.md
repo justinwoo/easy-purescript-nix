@@ -13,6 +13,25 @@ See the blog post about this here: <https://github.com/justinwoo/my-blog-posts/b
 
 Raison d'etre: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2019-04-29-why-easy-purescript-nix.md>
 
+## Breaking change Jul 02 2019
+
+The default derivation is now a function that will take `pkgs` as an argument. By default, it will use nixpkgs as before.
+
+You can update your usage of this derivation by simply applying an empty set `{}` to the imported function.
+
+E.g.
+
+```nix
+  easy-ps = import (pkgs.fetchFromGitHub {
+    owner = "justinwoo";
+    repo = "easy-purescript-nix";
+    rev = "7d072cef5ad9dc33a9a9f1b7fcf8ff083ff484b3";
+    sha256 = "0974wrnp8rnmj1wzaxwlmk5mf1vxdbrvjc1h8jgm9j5686qn0mna";
+  }) {
+    inherit pkgs;
+  };
+```
+
 ## Example usage
 
 This repository uses Easy-PureScript-Nix for its setup:
