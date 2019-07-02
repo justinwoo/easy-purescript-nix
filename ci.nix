@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  default = import ./default.nix;
+  default = import ./default.nix {};
 
   buildInputs = builtins.attrValues {
     inherit (default)
