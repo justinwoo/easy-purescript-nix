@@ -1,6 +1,6 @@
-let
-  pkgs = import <nixpkgs> {};
+{ pkgs ? import <nixpkgs> {} }:
 
+let
   easy-dhall = import ./easy-dhall.nix {
     inherit pkgs;
   };
