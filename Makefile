@@ -31,3 +31,6 @@ test:
 
 	which pscid
 	pscid --help
+
+	which purty
+	purty --help

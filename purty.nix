@@ -1,0 +1,49 @@
+{ pkgs ? import <nixpkgs> {} }:
+
+let
+  dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
+
+  patchelf = libPath: if pkgs.stdenv.isDarwin
+    then ""
+    else ''
+          chmod u+w $PURTY
+          patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PURTY
+          chmod u-w $PURTY
+        '';
+
+in pkgs.stdenv.mkDerivation rec {
+  name = "purty";
+
+  version = "4.4.0";
+
+  src = if pkgs.stdenv.isDarwin
+    then pkgs.fetchurl {
+      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.4.0-osx.tar.gz";
+      sha256 = "0vpp8g4snwcvdnamr9lp22g8ipwfyhfmvmpziyddfwlhy6hrdf0c";
+    }
+    else pkgs.fetchurl {
+      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.4.0-linux.tar.gz";
+      sha256 = "061qj8bp9fv322s4bpwrmj7a0jkharhckywrrmraaxk7rmb07gnc";
+    };
+
+  buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
+
+  libPath = pkgs.lib.makeLibraryPath buildInputs;
+
+  dontStrip = true;
+
+  unpackPhase = ''
+    tar xf $src
+  '';
+
+  installPhase = ''
+    mkdir -p $out/bin
+    PURTY="$out/bin/purty"
+
+    install -D -m555 -T purty $PURTY
+    ${patchelf libPath}
+
+    mkdir -p $out/etc/bash_completion.d/
+    $PURTY --bash-completion-script $PURTY > $out/etc/bash_completion.d/purty-completion.bash
+  '';
+}

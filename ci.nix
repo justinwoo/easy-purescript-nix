@@ -14,6 +14,7 @@ let
       zephyr
       pscid
       spago2nix
+      purty
       psc-package2nix;
   };
 

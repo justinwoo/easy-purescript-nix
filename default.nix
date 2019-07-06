@@ -59,6 +59,10 @@ let
     pscid = import ./pscid {
       inherit pkgs nodeEnv purs;
     };
+
+    purty = import ./purty.nix {
+      inherit pkgs;
+    };
   };
 
   buildInputs = builtins.attrValues inputs;
