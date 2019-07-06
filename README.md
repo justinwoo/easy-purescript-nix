@@ -2,16 +2,54 @@
 
 [![Build Status](https://travis-ci.com/justinwoo/easy-purescript-nix.svg?branch=master)](https://travis-ci.com/justinwoo/easy-purescript-nix)
 
-Improvements welcomed, following two rules:
+A project for using PureScript and related tooling easily with Nix.
 
-Rules:
+## Example usage
 
-1. Binary downloads, no rebuilding
-2. Should be easy to pull it from remote (could be improved, see [remote-test.nix](./remote-test.nix))
+See [ci.nix](./ci.nix) in this repo for example `nix-shell` usage.
 
-See the blog post about this here: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2018-10-24-using-purescript-easily-with-nix.md>
+This repository uses Easy-PureScript-Nix for its setup: <https://github.com/justinwoo/vidtracker>
 
-Raison d'etre: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2019-04-29-why-easy-purescript-nix.md>
+## Potential questions
+
+### Can I see an example of this at work?
+
+As usual, my vidtracker also has lots of usages: <https://github.com/justinwoo/vidtracker/tree/f78b3df57eaf5b122f0a0b51cc4e3c246bf96f88>
+
+### Porco zio, I love this. How do I install to my system from here?
+
+Behold:
+
+```
+> nix-env -f default.nix -iA purs
+# or nix-env -if purs.nix
+
+> which purs
+/home/justin/.nix-profile/bin/purs
+> purs --version
+0.13.2
+```
+
+Or in your own Nix expressions instead:
+
+```nix
+{ pkgs ? import <nixpkgs> {} }:
+
+let
+  easyPS = import (pkgs.fetchFromGitHub {
+    owner = "justinwoo";
+    repo = "easy-purescript-nix";
+    rev = "<some-rev-here>";
+    sha256 = "<some-sha-here>";
+  });
+in {
+  inherit (easyPS)
+    purs
+    spago;
+}
+```
+
+etc.
 
 ## Breaking change Jul 02 2019
 
@@ -32,60 +70,13 @@ E.g.
   };
 ```
 
-## Example usage
 
-This repository uses Easy-PureScript-Nix for its setup:
+## Why was this made?
 
-<https://github.com/justinwoo/vidtracker>
+See the blog post about this here: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2018-10-24-using-purescript-easily-with-nix.md>
 
-## Warning
+Raison d'etre: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2019-04-29-why-easy-purescript-nix.md>
 
-Thanks to Pekka (@kaitanie), we have things working on NixOS. So report issues if things are broken!
+## Credits
 
-*I (Justin) do not use NixOS, so these builds may require extra patching for consumption from NixOS.*
-
-## Potential questions
-
-### Can I see an example of this at work?
-
-As usual, my vidtracker also has lots of usages: <https://github.com/justinwoo/vidtracker/tree/f78b3df57eaf5b122f0a0b51cc4e3c246bf96f88>
-
-### Porco zio, I love this. How do I install to my system from here?
-
-Behold:
-
-```
-> nix-env -f default.nix -iA purs
-replacing old 'purs-simple'
-installing 'purs-simple'
-building '/nix/store/aqiwls5papn9j1hy4gsziywj92m5f632-user-environment.drv'...
-created 2259 symlinks in user environment
-
-> which purs
-/home/justin/.nix-profile/bin/purs
-> purs --version
-0.12.5
-```
-
-Or in your dotfiles instead:
-
-```nix
-let
-  pkgs = import <nixpkgs> {};
-
-  easyPS = import (pkgs.fetchFromGitHub {
-    owner = "justinwoo";
-    repo = "easy-purescript-nix";
-    rev = "bad807ade1314420a52c589dbc3d64d3c9b38480";
-    sha256 = "099dpxrpch8cgy310svrpdcad2y1qdl6l782mjpcgn3rqgj62vsf";
-  });
-in {
-  inherit(easyPS.inputs)
-   purs
-   psc-package-simple
-   purp
-   ;
-}
-```
-
-etc.
+Thanks to Pekka (@kaitanie) for making this work on NixOS.
