@@ -6,11 +6,11 @@ let
 in pkgs.stdenv.mkDerivation rec {
   name = "psc-package-simple";
 
-  version = "v0.4.2";
+  version = "v0.5.1";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/purescript/psc-package/releases/download/${version}/linux64.tar.gz";
-    sha256 = "0h8jkxqxi44vrzwl1c5zddxjxqbzkwgmn2m7gxlgs019xlsmml4w";
+    url = "https://github.com/purescript/psc-package/releases/download/v0.5.1/linux64.tar.gz";
+    sha256 = "0nffiqhfdfkg0i9hgz3vhnjrwsb4gg912rmsn2gdfgbh1m44k5df";
   };
 
   buildInputs = [ pkgs.gmp ];

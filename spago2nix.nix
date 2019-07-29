@@ -3,8 +3,8 @@
 import (pkgs.fetchFromGitHub {
   owner = "justinwoo";
   repo = "spago2nix";
-  rev = "23ea21c94c1ca520fecf6d0c2ddee9bdd9b49540";
-  sha256 = "0jmapy9i0v4jfh358krnml7d7m7p30ir4man8hcacm0iyrf97nkb";
+  rev = "1e5f612ee1d57476fa145993e99e4d1a085d2a7f";
+  sha256 = "1hpmj3qwidrrshjgkiw9hc3h5mg5hm63hxhyhfj3vy946nlkhng2";
 }) {
   inherit pkgs;
 }

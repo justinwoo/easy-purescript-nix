@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "v0.2.1";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/${version}/linux64.tar.gz";
+    url = "https://github.com/coot/zephyr/releases/download/v0.2.1/linux64.tar.gz";
     sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
   };
 
