@@ -3,8 +3,8 @@
 import (pkgs.fetchFromGitHub {
   owner = "justinwoo";
   repo = "easy-dhall-nix";
-  rev = "83158cb4bb6ea21ccf74f08335b0369b527d12a6";
-  sha256 = "1r8biwf3ilkw9hf0f2dqibdj2mk66885fhccp34i44rgmgg755bl";
+  rev = "de5dfc71ce9e7597b62b470dee9254c6de09d515";
+  sha256 = "1103sczf2xkwgbmmkmaqf59db6q0gb18vv4v3i7py1f8nlpyv02i";
 }) {
   inherit pkgs;
 }
