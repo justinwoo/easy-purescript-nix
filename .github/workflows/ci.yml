@@ -1,0 +1,9 @@
+name: My Workflow
+on: [push]
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    container: "docker://lnl7/nix:2019-03-01"
+    steps:
+      - run: nix-shell ci.nix -j 100 --run 'make test'
