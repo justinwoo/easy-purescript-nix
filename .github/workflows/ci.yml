@@ -1,0 +1,13 @@
+name: My Workflow
+on: [push]
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: nix
+        run: |
+          curl https://nixos.org/nix/install | sh
+          . /home/runner/.nix-profile/etc/profile.d/nix.sh
+          nix-shell ci.nix -j 100 --run 'make test'
