@@ -14,5 +14,5 @@ jobs:
     - name: Run a multi-line script
       run: |
         curl https://nixos.org/nix/install | sh
-        ls "what"
+        . /home/runner/.nix-profile/etc/profile.d/nix.sh
         nix
