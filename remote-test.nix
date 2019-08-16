@@ -4,8 +4,8 @@ let
   remote = import (pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "easy-purescript-nix";
-    rev = "9a8d138663c5d751e3a84f1345166e1f0f760a07";
-    sha256 = "1c0mqn4wxh4bmxnf6hgrhk442kl2m9y315wik87wrw2ikb7s1szf";
+    rev = "50ebcb6107aec7562b8391e5b329c2856d79fc96";
+    sha256 = "1j7mrk094mvaadpsxcz11namrzng9pzn4yzzlzmlcn90q3jzma1v";
   }) {
     inherit pkgs;
   };
