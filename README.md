@@ -1,7 +1,5 @@
 # Easy PureScript Nix, NixOS Ready™
 
-[![Build Status](https://travis-ci.com/justinwoo/easy-purescript-nix.svg?branch=master)](https://travis-ci.com/justinwoo/easy-purescript-nix)
-
 A project for using PureScript and related tooling easily with Nix.
 
 ## Example usage
