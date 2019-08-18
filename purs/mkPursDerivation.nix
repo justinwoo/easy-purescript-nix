@@ -16,7 +16,7 @@ let
         '';
 
 in pkgs.stdenv.mkDerivation rec {
-  name = "purs-${version}";
+  name = "purescript";
 
   version = _version;
 
