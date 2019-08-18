@@ -8,18 +8,15 @@ let
 
     inherit (default)
       purs
-      psc-package
       purp
       dhall-simple
       dhall-json-simple
       spago
-      zephyr
       pscid
       spago2nix
-      purty
-      psc-package2nix;
+      purty;
   };
 
-in pkgs.runCommand "easy-purescript-nix-ci-shell" {
+in pkgs.mkShell {
   buildInputs = buildInputs;
-} ""
+}
