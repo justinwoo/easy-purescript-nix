@@ -10,7 +10,6 @@ let
       purs
       purp
       dhall-simple
-      dhall-json-simple
       spago
       pscid
       spago2nix

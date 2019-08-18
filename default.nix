@@ -20,6 +20,10 @@ let
   };
 
   inputs = rec {
+    purs-0_13_3 = import ./purs/0.13.3.nix {
+      inherit pkgs;
+    };
+
     purs-0_13_2 = import ./purs/0.13.2.nix {
       inherit pkgs;
     };
@@ -28,7 +32,7 @@ let
       inherit pkgs;
     };
 
-    purs = purs-0_13_2;
+    purs = purs-0_13_3;
 
     purs-simple = purs;
 
@@ -44,7 +48,7 @@ let
       inherit pkgs;
     };
 
-    inherit (easy-dhall) dhall-simple dhall-json-simple;
+    inherit (easy-dhall) dhall-simple;
 
     spago = import ./spago.nix {
       inherit pkgs;
