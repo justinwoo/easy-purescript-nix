@@ -4,9 +4,6 @@ test:
 	which purs
 	purs --version
 
-	which psc-package
-	psc-package --version
-
 	which purp
 	purp
 
@@ -18,13 +15,6 @@ test:
 
 	which spago
 	spago version
-
-	which zephyr
-	zephyr --version
-
-	which psc-package2nix
-	which pp2n
-	pp2n
 
 	which spago2nix
 	spago2nix
