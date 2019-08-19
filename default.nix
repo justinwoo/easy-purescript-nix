@@ -48,7 +48,7 @@ let
       inherit pkgs;
     };
 
-    inherit (easy-dhall) dhall-simple;
+    inherit (easy-dhall) dhall-simple dhall-json-simple;
 
     spago = import ./spago.nix {
       inherit pkgs;
