@@ -14,16 +14,16 @@ let
 in pkgs.stdenv.mkDerivation rec {
   name = "purty";
 
-  version = "4.4.0";
+  version = "4.5.1";
 
   src = if pkgs.stdenv.isDarwin
     then pkgs.fetchurl {
-      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.4.0-osx.tar.gz";
-      sha256 = "0vpp8g4snwcvdnamr9lp22g8ipwfyhfmvmpziyddfwlhy6hrdf0c";
+      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.5.1-osx.tar.gz";
+      sha256 = "1nl86ajix0kzz7l6my1nj22zra4pcz7mp6kb730p2a9jxdk37f12";
     }
     else pkgs.fetchurl {
-      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.4.0-linux.tar.gz";
-      sha256 = "061qj8bp9fv322s4bpwrmj7a0jkharhckywrrmraaxk7rmb07gnc";
+      url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.5.1-linux.tar.gz";
+      sha256 = "050m7wnaz7d20amsprps02j65qywa4r0n873f444g6db9alvazrv";
     };
 
   buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
