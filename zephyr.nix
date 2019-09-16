@@ -6,14 +6,14 @@ pkgs.stdenv.mkDerivation rec {
   version = "v0.2.1";
 
   src = if pkgs.stdenv.isDarwin
-    then pkgs.fetchurl {
-      url = "https://github.com/coot/zephyr/releases/download/v0.2.1/macos.tar.gz";
-      sha256 = "0zwdsrs7r6ff534wrar32lk39fjai1jj4dxz4bjh3yhw63lvdqfn";
-    }
-    else pkgs.fetchurl {
-      url = "https://github.com/coot/zephyr/releases/download/v0.2.1/linux64.tar.gz";
-      sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
-    };
+  then pkgs.fetchurl {
+    url = "https://github.com/coot/zephyr/releases/download/v0.2.1/macos.tar.gz";
+    sha256 = "0zwdsrs7r6ff534wrar32lk39fjai1jj4dxz4bjh3yhw63lvdqfn";
+  }
+  else pkgs.fetchurl {
+    url = "https://github.com/coot/zephyr/releases/download/v0.2.1/linux64.tar.gz";
+    sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
+  };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
 
@@ -37,8 +37,7 @@ pkgs.stdenv.mkDerivation rec {
       $ZEPHYR
   '' + pkgs.stdenv.lib.optionalString (!pkgs.stdenv.isDarwin) ''
     patchelf --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath ${libPath} $ZEPHYR
-  '' +
-  ''
+  '' + ''
     chmod u-w $ZEPHYR
 
     mkdir -p $out/etc/bash_completion.d/
