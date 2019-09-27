@@ -1,10 +1,8 @@
 { pkgs, nodeEnv, purs }:
 let
-  src = pkgs.fetchFromGitHub {
-    owner = "justinwoo";
-    repo = "pscid";
-    rev = "8e80848a04d72da69ff20cacda302ee742ba19d4";
-    sha256 = "017b4n8n2v6chlb00v11xgadprbqxhxyhkxnh49xig2r9k7x0vbv";
+  src = builtins.fetchTarball {
+    url = "https://registry.npmjs.org/pscid/-/pscid-2.8.3.tgz";
+    sha256 = "0ck3h78gn2bs990jya3zw0a265yn4fb8hdyfv6g3gmx121rifxx6";
   };
 
   # Generated with node2nix
