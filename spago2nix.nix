@@ -4,8 +4,8 @@ import (
   pkgs.fetchFromGitHub {
     owner = "justinwoo";
     repo = "spago2nix";
-    rev = "96d0fd2ab96e62ad5fa2d5f0dd086652a2ac2901";
-    sha256 = "1kzv2y970x0vii2pgfhpyg9q77vw3zz9p370z70sqkc6m424j2vb";
+    rev = "ff6197f08125a82e722303c05aa7b93492a225b3";
+    sha256 = "1k1ib5zascl8zzfq0djwg24q7f6742gb6pcdfq52a3icxjch3178";
   }
 ) {
   inherit pkgs;
