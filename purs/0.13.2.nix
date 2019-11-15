@@ -6,11 +6,11 @@ let
   src = if pkgs.stdenv.isDarwin
     then pkgs.fetchurl {
       url = "https://github.com/purescript/purescript/releases/download/v0.13.2/macos.tar.gz";
-      sha256 = "14svlra2vhbxyk2l76czhxj16w9jhnwagb8mwv9pw4siiayqa8cz";
+      sha1 = "d3ef12d802ef5ace14fbf7c6c2c97ce1c3b6304c";
     }
     else pkgs.fetchurl {
       url = "https://github.com/purescript/purescript/releases/download/v0.13.2/linux64.tar.gz";
-      sha256 = "00jm8hmg7xq4c6z1b00b4y229n6bpbvfkzbij2idanms1p1m4mfm";
+      sha1 = "3d0259a82a48a776e31116bd7a5f607a2f035c49";
     };
 
 in import ./mkPursDerivation.nix {
