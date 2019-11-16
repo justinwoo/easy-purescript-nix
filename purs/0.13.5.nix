@@ -10,7 +10,7 @@ let
   }
   else pkgs.fetchurl {
     url = "https://github.com/purescript/purescript/releases/download/v0.13.5/linux64.tar.gz";
-    sha256 = "0x1vy3hcqc83wyz0qkjzjc9063p63aqngkds28djqs378bpzgzjh";
+    sha256 = "016wvwypgb4859f0n1lqsqv9a8cca2y8g7d6ffvzx6rncd115gxi";
   };
 
 in
