@@ -17,12 +17,12 @@ pkgs.stdenv.mkDerivation rec {
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://github.com/spacchetti/spago/releases/download/0.11.1.0/osx.tar.gz";
-    sha256 = "1bwp665k0fvma9rjlp0fhs65165z5krchdpi41pisxl4rpdgaxdz";
+    url = "https://github.com/spacchetti/spago/releases/download/0.12.1.0/osx.tar.gz";
+    sha256 = "19wsw8dfcidjyq84z060vrabjikbixvy1n0drssl1yx400pqq8a9";
   }
   else pkgs.fetchurl {
-    url = "https://github.com/spacchetti/spago/releases/download/0.11.1.0/linux-dynamic.tar.gz";
-    sha256 = "0yr3n6rsg9ly1v2cxldi174026z59klm1k40sadrqvhhh9kasfjh";
+    url = "https://github.com/spacchetti/spago/releases/download/0.12.1.0/linux.tar.gz";
+    sha256 = "0zvnymdvf94w1m5yhibqdb3jv178ipq4vy13clrgz5ny5icv019k";
   };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 pkgs.stdenv.cc.cc.lib ];
