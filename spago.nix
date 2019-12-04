@@ -11,7 +11,7 @@ let
 
 in
 pkgs.stdenv.mkDerivation rec {
-  name = "spago";
+  pname = "spago";
 
   version = "0.14.0";
 

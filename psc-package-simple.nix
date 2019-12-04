@@ -5,9 +5,9 @@ let
 
 in
 pkgs.stdenv.mkDerivation rec {
-  name = "psc-package-simple";
+  pname = "psc-package-simple";
 
-  version = "v0.6.2";
+  version = "0.6.2";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {

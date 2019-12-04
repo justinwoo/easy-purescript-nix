@@ -1,9 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.stdenv.mkDerivation rec {
-  name = "zephyr";
+  pname = "zephyr";
 
-  version = "v0.2.2";
+  version = "0.2.2";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
