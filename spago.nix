@@ -18,11 +18,11 @@ pkgs.stdenv.mkDerivation rec {
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
     url = "https://github.com/spacchetti/spago/releases/download/0.13.1/osx.tar.gz";
-    sha256 = "611f73d90196e1b97ce0616685389a2d4a698b340772f8253635c605fec6131a";
+    sha256 = "06hkqvz0biim6qjzhwh76j5njjidk8w8ark1w1ybkqcn07cp67v1";
   }
   else pkgs.fetchurl {
     url = "https://github.com/spacchetti/spago/releases/download/0.13.1/linux.tar.gz";
-    sha256 = "85c25d8c5bfd6ca45298ea66c50bab05020885caf0b920ac5c9524d23c984c68";
+    sha256 = "0s2ck0yd494mbjn21fghra2hh0h5mc5warpak19a8v7xbf65vhl5";
   };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 pkgs.stdenv.cc.cc.lib ];
