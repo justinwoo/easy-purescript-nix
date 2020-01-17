@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> {}
-, nodejs ? pkgs.nodejs-10_x # NOTE: Need to use node2nix --nodejs-10
+, nodejs ? pkgs.nodejs
 }:
 
 let
