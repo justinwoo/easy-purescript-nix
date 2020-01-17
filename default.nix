@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}
+, nodejs ? pkgs.nodejs-10_x # NOTE: Need to use node2nix --nodejs-10
+}:
 
 let
   easy-dhall = import ./easy-dhall.nix {
@@ -10,10 +12,7 @@ let
       inherit (pkgs) fetchurl;
     }
   ) {
-    nodejs = pkgs.nodejs-10_x;
-
-    # NOTE: Need to use node2nix --nodejs-10
-
+    inherit nodejs;
     inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
 
     libtool = if pkgs.stdenv.isDarwin
