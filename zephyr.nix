@@ -3,16 +3,16 @@
 pkgs.stdenv.mkDerivation rec {
   name = "zephyr";
 
-  version = "v0.2.1";
+  version = "v0.2.2";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v0.2.1/macos.tar.gz";
-    sha256 = "0zwdsrs7r6ff534wrar32lk39fjai1jj4dxz4bjh3yhw63lvdqfn";
+    url = "https://github.com/coot/zephyr/releases/download/v0.2.2/x86_64-osx.tar.gz";
+    sha256 = "1fslg0h5dzrah1rkjvz9gw2s2kksmdfdkpz7a7z1akn8s6nqnd93";
   }
   else pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v0.2.1/linux64.tar.gz";
-    sha256 = "0afcnpqabjs4b60grkcvz2hb3glpjhlnvqvpgc0zsdwaqnmcrrnk";
+    url = "https://github.com/coot/zephyr/releases/download/v0.2.2/x86_64-linux.tar.gz";
+    sha256 = "0kgvrd6i1yj5n09ar82q27wgq6n5x9x6iy93nx1yqvk87kcmbji6";
   };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
