@@ -7,16 +7,16 @@ in
 pkgs.stdenv.mkDerivation rec {
   name = "psc-package-simple";
 
-  version = "v0.6.0";
+  version = "v0.6.1";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://github.com/purescript/psc-package/releases/download/v0.6.0/macos.tar.gz";
-    sha256 = "0v1hy67rivgcngirfl71nqabq902csdzwqhkx7hnmg49j83fdca2";
+    url = "https://github.com/purescript/psc-package/releases/download/v0.6.1/macos.tar.gz";
+    sha256 = "0jna66c21za9v1cgqip7qlzghr951vv6cwkjxr2hq0v8yjljvf3r";
   }
   else pkgs.fetchurl {
-    url = "https://github.com/purescript/psc-package/releases/download/v0.6.0/linux64.tar.gz";
-    sha256 = "1wszhrj7mj7k4k0laq18aip9n52cds6pwrh043iwdj3y0681vwa1";
+    url = "https://github.com/purescript/psc-package/releases/download/v0.6.1/linux64.tar.gz";
+    sha256 = "0yxylz5chaajf5sz8j860mwv7jxfd1b9nmyic0i6l5n5rhbhbb5m";
   };
 
   buildInputs = [ pkgs.gmp ];
