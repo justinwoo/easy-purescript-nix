@@ -4,6 +4,9 @@
 which purs
 purs --version
 
+which psc-package
+psc-package --version
+
 which purp
 purp
 
