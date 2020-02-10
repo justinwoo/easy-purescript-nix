@@ -19,7 +19,7 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "0yxylz5chaajf5sz8j860mwv7jxfd1b9nmyic0i6l5n5rhbhbb5m";
   };
 
-  buildInputs = [ pkgs.gmp ];
+  buildInputs = [ pkgs.gmp pkgs.zlib ];
 
   libPath = pkgs.lib.makeLibraryPath buildInputs;
 
