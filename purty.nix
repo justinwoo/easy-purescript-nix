@@ -13,7 +13,7 @@ let
 
 in
 pkgs.stdenv.mkDerivation rec {
-  name = "purty";
+  pname = "purty";
 
   version = "4.5.1";
 
