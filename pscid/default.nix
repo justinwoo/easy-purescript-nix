@@ -1,8 +1,8 @@
 { pkgs, nodeEnv, purs }:
 let
   src = builtins.fetchTarball {
-    url = "https://registry.npmjs.org/pscid/-/pscid-2.8.3.tgz";
-    sha256 = "0ck3h78gn2bs990jya3zw0a265yn4fb8hdyfv6g3gmx121rifxx6";
+    url = "https://registry.npmjs.org/pscid/-/pscid-2.9.2.tgz";
+    sha256 = "0gdjh16v25grqwlg9g60yigq5q6m0gqbkh8vgpyjrb3xnarr2smp";
   };
 
   # Generated with node2nix
@@ -15,7 +15,7 @@ let
   args = {
     name = "pscid";
     packageName = "pscid";
-    version = "2.6.0";
+    version = "2.9.2";
     inherit src;
     meta = {
       description = "A lightweight editor experience for PureScript development";
