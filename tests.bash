@@ -24,3 +24,6 @@ pscid --help
 
 which purty
 purty --help
+
+which zephyr
+zephyr --version
