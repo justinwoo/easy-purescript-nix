@@ -1,8 +1,8 @@
 { pkgs, nodeEnv, purs }:
 let
   src = builtins.fetchTarball {
-    url = "https://registry.npmjs.org/pscid/-/pscid-2.9.2.tgz";
-    sha256 = "0gdjh16v25grqwlg9g60yigq5q6m0gqbkh8vgpyjrb3xnarr2smp";
+    url = "https://github.com/kritzcreek/pscid/archive/338d7ef7c38b6928713aaef9304da6ff09247fc2.tar.gz";
+    sha256 = "1j11fll3qs4sxk1sc86vd8vmxqp9sz3qpynmr1xs9r8lsyp30jb7";
   };
 
   # Generated with node2nix
