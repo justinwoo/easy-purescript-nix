@@ -1,19 +1,12 @@
-name: My Workflow
-on: [push]
+name: tests
 
+on:
+  pull_request:
+  push:
 jobs:
-  my_job:
-    name: My Job on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
+  tests:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: nix
-        run: |
-          curl https://nixos.org/nix/install | sh
-          . "$HOME"/.nix-profile/etc/profile.d/nix.sh
-          ./tests.bash
+    - uses: actions/checkout@v2
+    - uses: cachix/install-nix-action@v9
+    - run: ./tests.bash
