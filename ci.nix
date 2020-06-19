@@ -6,7 +6,7 @@ let
   buildInputs = builtins.attrValues {
     inherit (pkgs) gnumake which;
 
-    inherit (default) purs purp dhall-simple spago pscid spago2nix purty zephyr;
+    inherit (default) purs purp psc-package dhall-simple spago pscid spago2nix purty zephyr;
   };
 
 in

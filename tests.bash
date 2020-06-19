@@ -22,7 +22,7 @@ which spago2nix
 spago2nix
 
 which pscid
-pscid --help
+pscid --version
 
 which purty
 purty --help
