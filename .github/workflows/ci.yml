@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: cachix/install-nix-action@v9
-    - run: cd test && ./tests.bash
+    - run: ./tests.bash
