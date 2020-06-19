@@ -1,30 +1,25 @@
-{ pkgs, nodeEnv, purs }:
+{ pkgs ? import <nixpkgs> {
+    inherit system;
+  }
+, system ? builtins.currentSystem
+, nodejs ? pkgs."nodejs-12_x"
+}:
 let
-  src = builtins.fetchTarball {
-    url = "https://github.com/kritzcreek/pscid/archive/338d7ef7c38b6928713aaef9304da6ff09247fc2.tar.gz";
-    sha256 = "1j11fll3qs4sxk1sc86vd8vmxqp9sz3qpynmr1xs9r8lsyp30jb7";
+  nodeEnv = import ./node-env.nix {
+    inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
+    inherit nodejs;
+    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 
-  # Generated with node2nix
-  # https://github.com/svanderburg/node2nix
-  # (node2nix --lock package-lock.json --nodejs-10)
-  nodeModules = import ./node-modules.nix {
+  args = (import ./node-packages.nix {
     inherit (pkgs) fetchurl fetchgit;
-  };
+    inherit nodeEnv;
+  }
+  ).args;
 
-  args = {
-    name = "pscid";
-    packageName = "pscid";
-    version = "2.9.2";
-    inherit src;
-    meta = {
-      description = "A lightweight editor experience for PureScript development";
-      license = "LGPL-3.0";
-    };
-    production = true;
-    bypassCache = true;
-    dependencies = nodeModules;
-    buildInputs = [ purs ];
+  npmPackage = builtins.fetchTarball {
+    url = "https://registry.npmjs.org/pscid/-/pscid-2.9.3.tgz";
+    sha256 = "1vzpi43l5h85j1am4qhxqmzx3rkpa1527jdzgcys7ixhsxs349my";
   };
 in
-nodeEnv.buildNodePackage args
+nodeEnv.buildNodePackage (args // { src = npmPackage; })

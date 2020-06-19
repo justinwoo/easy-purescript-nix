@@ -1,6 +1,8 @@
 #!/usr/bin/env nix-shell
 #!nix-shell ci.nix -i bash
 
+set -e
+
 which purs
 purs --version
 
@@ -20,7 +22,7 @@ which spago2nix
 spago2nix
 
 which pscid
-pscid --help
+pscid --version
 
 which purty
 purty --help

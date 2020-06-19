@@ -5,22 +5,6 @@ let
     inherit pkgs;
   };
 
-  nodeEnv = (
-    import ./node-env.nix {
-      inherit (pkgs) fetchurl;
-    }
-  ) {
-    nodejs = pkgs.nodejs-10_x;
-
-    # NOTE: Need to use node2nix --nodejs-10
-
-    inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
-
-    libtool = if pkgs.stdenv.isDarwin
-    then pkgs.darwin.cctools
-    else null;
-  };
-
   inputs = rec {
     purs-0_13_8 = import ./purs/0.13.8.nix {
       inherit pkgs;
@@ -85,7 +69,7 @@ let
     };
 
     pscid = import ./pscid {
-      inherit pkgs nodeEnv purs;
+      inherit pkgs;
     };
 
     purty = import ./purty.nix {
