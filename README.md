@@ -1,20 +1,14 @@
 # Easy PureScript Nix, NixOS Ready™
 
-A project for using PureScript and related tooling easily with Nix.
+A project for using PureScript and related tooling easily with Nix. Note that the `purescript` derivation used in nixpkgs is a derivative of the derivatifrom this project, so if you do not care about which version of PureScript you want to use, you can simply use it from there.
 
 ## Example usage
 
 See [ci.nix](./ci.nix) in this repo for example `nix-shell` usage.
 
-This repository uses Easy-PureScript-Nix for its setup: <https://github.com/justinwoo/vidtracker>
-
 ## Potential questions
 
-### Can I see an example of this at work?
-
-As usual, my vidtracker also has lots of usages: <https://github.com/justinwoo/vidtracker/tree/f78b3df57eaf5b122f0a0b51cc4e3c246bf96f88>
-
-### Porco zio, I love this. How do I install to my system from here?
+### How do I install to my system from here?
 
 Behold:
 
@@ -39,35 +33,12 @@ let
     repo = "easy-purescript-nix";
     rev = "<some-rev-here>";
     sha256 = "<some-sha-here>";
-  });
+  }) { inherit pkgs; };
 in {
   inherit (easyPS)
-    purs
-    spago;
+    purs;
 }
 ```
-
-etc.
-
-## Breaking change Jul 02 2019
-
-The default derivation is now a function that will take `pkgs` as an argument. By default, it will use nixpkgs as before.
-
-You can update your usage of this derivation by simply applying an empty set `{}` to the imported function.
-
-E.g.
-
-```nix
-  easy-ps = import (pkgs.fetchFromGitHub {
-    owner = "justinwoo";
-    repo = "easy-purescript-nix";
-    rev = "7d072cef5ad9dc33a9a9f1b7fcf8ff083ff484b3";
-    sha256 = "0974wrnp8rnmj1wzaxwlmk5mf1vxdbrvjc1h8jgm9j5686qn0mna";
-  }) {
-    inherit pkgs;
-  };
-```
-
 
 ## Why was this made?
 
