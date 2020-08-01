@@ -72,6 +72,10 @@ let
       inherit pkgs;
     };
 
+    pulp = (import ./pulp {
+      inherit pkgs;
+    }).pulp;
+
     purty = import ./purty.nix {
       inherit pkgs;
     };

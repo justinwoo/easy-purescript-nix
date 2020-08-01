@@ -6,6 +6,10 @@ set -e
 which purs
 purs --version
 
+which pulp
+pulp --help
+pulp --version
+
 which psc-package
 psc-package --version
 
