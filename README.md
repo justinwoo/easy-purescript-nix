@@ -19,7 +19,7 @@ Behold:
 > which purs
 /home/justin/.nix-profile/bin/purs
 > purs --version
-0.13.2
+0.13.8
 ```
 
 Or by `shell.nix`:
@@ -31,8 +31,8 @@ let
     (pkgs.fetchFromGitHub {
       owner = "justinwoo";
       repo = "easy-purescript-nix";
-      rev = "0ba91d9aa9f7421f6bfe4895677159a8a999bf20";
-      sha256 = "1baq7mmd3vjas87f0gzlq83n2l1h3dlqajjqr7fgaazpa9xgzs7q";
+      rev = "a5fd0328827ac46954db08f624c09eba981f1ab2";
+      sha256 = "1g3bk2y8hz0y998yixz3jmvh553kjpj2k7j0xrp4al1jrbdcmgjq";
     }) {
     inherit pkgs;
   };
