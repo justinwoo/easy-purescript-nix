@@ -4,7 +4,13 @@ A project for using PureScript and related tooling easily with Nix. Note that th
 
 ## Example usage
 
-See [ci.nix](./ci.nix) in this repo for example `nix-shell` usage.
+See [ci.nix](./ci.nix) in this repo for a Nix expression example to be used with `nix-shell`.
+
+```text
+$ nix-shell ./ci.nix
+```
+
+Or simply clone this repo, `cd` into it, and type `nix-shell` (which implicitly calls [`shell.nix`](./shell.nix)).
 
 ## Potential questions
 
