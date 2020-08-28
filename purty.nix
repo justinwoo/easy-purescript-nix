@@ -1,30 +1,18 @@
 { pkgs ? import <nixpkgs> {} }:
 
-let
-  dynamic-linker = pkgs.stdenv.cc.bintools.dynamicLinker;
-
-  patchelf = libPath: if pkgs.stdenv.isDarwin
-  then ""
-  else ''
-    chmod u+w $PURTY
-    patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PURTY
-    chmod u-w $PURTY
-  '';
-
-in
 pkgs.stdenv.mkDerivation rec {
   pname = "purty";
 
-  version = "4.5.1";
+  version = "6.2.0";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.5.1-osx.tar.gz";
-    sha256 = "1nl86ajix0kzz7l6my1nj22zra4pcz7mp6kb730p2a9jxdk37f12";
+    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-6.2.0-osx.tar.gz";
+    sha256 = "1d81xkhwnkgkdxc91d0knqixbhm5wgkc173m9kzlqzyhvpg90d64";
   }
   else pkgs.fetchurl {
-    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-4.5.1-linux.tar.gz";
-    sha256 = "050m7wnaz7d20amsprps02j65qywa4r0n873f444g6db9alvazrv";
+    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-6.2.0-linux.tar.gz";
+    sha256 = "1p6yy8qd7iwm6qw2zmv2m0ikm00xfj302q9arigxgh5kzsmrzg5i";
   };
 
   buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
@@ -42,7 +30,6 @@ pkgs.stdenv.mkDerivation rec {
     PURTY="$out/bin/purty"
 
     install -D -m555 -T purty $PURTY
-    ${patchelf libPath}
 
     mkdir -p $out/etc/bash_completion.d/
     $PURTY --bash-completion-script $PURTY > $out/etc/bash_completion.d/purty-completion.bash
