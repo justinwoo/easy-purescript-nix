@@ -1,6 +1,6 @@
-# Easy PureScript Nix, NixOS Ready™
+# Easy PureScript Nix
 
-A project for using PureScript and related tooling easily with Nix. Note that the `purescript` derivation used in nixpkgs is a derivative of the derivatifrom this project, so if you do not care about which version of PureScript you want to use, you can simply use it from there.
+A project for using PureScript and related tooling easily with Nix. Note that the `purescript` derivation used in nixpkgs is a derivative of the derivation from this project. See `default.nix` for more information on available versions.
 
 ## Example usage
 
@@ -13,6 +13,10 @@ $ nix-shell ./ci.nix
 Or simply clone this repo, `cd` into it, and type `nix-shell` (which implicitly calls [`shell.nix`](./shell.nix)).
 
 ## Potential questions
+
+### How do I use this? (How do I use derivations in Nix?)
+
+I have written about how to use parts of Nix here: <https://github.com/justinwoo/nix-shorts>
 
 ### How do I install to my system from here?
 
