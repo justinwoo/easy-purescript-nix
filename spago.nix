@@ -13,16 +13,16 @@ in
 pkgs.stdenv.mkDerivation rec {
   pname = "spago";
 
-  version = "0.16.0";
+  version = "0.18.1";
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://github.com/purescript/spago/releases/download/${version}/osx.tar.gz";
-    sha256 = "0ipyihmflsdza2w0b6npcwh1qbs7xd3b3yn820b816nsxn10ll77";
+    url = "https://github.com/purescript/spago/releases/download/${version}/macOS.tar.gz";
+    sha256 = "0bzswl0lz64lahxjrb0mwr7ykv4g181mivhvp5y2pggmczbrm2yh";
   }
   else pkgs.fetchurl {
-    url = "https://github.com/purescript/spago/releases/download/${version}/linux.tar.gz";
-    sha256 = "1j3vwgqlpw1cbf7ifi39jgyhc366y8jgmzsgn1h286bj6nl8l008";
+    url = "https://github.com/purescript/spago/releases/download/${version}/Linux.tar.gz";
+    sha256 = "10c9njn3lp37wj1jyzqpyjjksrxipidkpjmbb90x68q0wzf688c7";
   };
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 pkgs.stdenv.cc.cc.lib ];
