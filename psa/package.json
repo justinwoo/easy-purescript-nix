@@ -1,0 +1,7 @@
+{
+  "name": "psa",
+  "version": "0.8.2",
+  "dependencies": {
+    "purescript-psa": "0.8.2"
+  }
+}
