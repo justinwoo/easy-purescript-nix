@@ -72,6 +72,10 @@ let
       inherit pkgs;
     };
 
+    psa = import ./psa {
+      inherit pkgs;
+    };
+
     pscid = import ./pscid {
       inherit pkgs;
     };
