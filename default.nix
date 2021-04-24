@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 let
   easy-dhall = import ./easy-dhall.nix {
@@ -6,6 +6,10 @@ let
   };
 
   inputs = rec {
+    purs-0_14_1 = import ./purs/0.14.1.nix {
+      inherit pkgs;
+    };
+
     purs-0_14_0 = import ./purs/0.14.0.nix {
       inherit pkgs;
     };
@@ -38,7 +42,7 @@ let
       inherit pkgs;
     };
 
-    purs = purs-0_14_0;
+    purs = purs-0_14_1;
 
     purs-simple = purs;
 
@@ -97,7 +101,8 @@ inputs // {
 
   buildInputs = buildInputs;
 
-  shell = pkgs.runCommand "easy-purescript-nix-shell" {
-    buildInputs = buildInputs;
-  } "";
+  shell = pkgs.runCommand "easy-purescript-nix-shell"
+    {
+      buildInputs = buildInputs;
+    } "";
 }
