@@ -28,8 +28,5 @@ spago2nix
 which pscid
 pscid --version
 
-which purty
-purty --help
-
 which zephyr
 zephyr --version

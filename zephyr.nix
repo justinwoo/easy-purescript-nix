@@ -16,7 +16,7 @@ pkgs.stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = []
-    ++ pkgs.stdenv.lib.optional pkgs.stdenv.isDarwin pkgs.fixDarwinDylibNames;
+    ++ pkgs.lib.optional pkgs.stdenv.isDarwin pkgs.fixDarwinDylibNames;
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
 
@@ -32,7 +32,7 @@ pkgs.stdenv.mkDerivation rec {
     install -D -m555 -T $out/zephyr $ZEPHYR
 
     chmod u+w $ZEPHYR
-  '' + pkgs.stdenv.lib.optionalString (!pkgs.stdenv.isDarwin) ''
+  '' + pkgs.lib.optionalString (!pkgs.stdenv.isDarwin) ''
     patchelf --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" --set-rpath ${libPath} $ZEPHYR
   '' + ''
     chmod u-w $ZEPHYR
