@@ -1,10 +1,10 @@
-{ inputs =
-    { nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-      utils.url = "github:ursi/flake-utils/1";
-    };
+{ inputs.utils.url = "github:numtide/flake-utils";
 
-  outputs = { nixpkgs, utils, ... }:
-    utils.default-systems
-      ({ pkgs, ... }: { packages = (import ./. { inherit pkgs; }).inputs; })
-      { inherit nixpkgs; };
+  outputs = { utils, ... }:
+    utils.lib.eachDefaultSystem
+      (system:
+         { packages =
+             (import ./.  { pkgs = import ./pinned.nix { inherit system; }; }).inputs;
+         }
+      );
 }
