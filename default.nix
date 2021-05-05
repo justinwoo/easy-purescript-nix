@@ -87,10 +87,6 @@ let
     pulp = (import ./pulp {
       inherit pkgs;
     }).pulp;
-
-    purty = import ./purty.nix {
-      inherit pkgs;
-    };
   };
 
   buildInputs = builtins.attrValues inputs;
