@@ -7,11 +7,11 @@ pkgs.stdenv.mkDerivation rec {
 
   src = if pkgs.stdenv.isDarwin
   then pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v0.3.2/macOS.tar.gz";
+    url = "https://github.com/coot/zephyr/releases/download/v${version}/macOS.tar.gz";
     sha256 = "1zj2fq664akqfmczmcshg9bxlrsa2gj082bp92nkygsq6v677jk4";
   }
   else pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v0.3.2/Linux.tar.gz";
+    url = "https://github.com/coot/zephyr/releases/download/v${version}/Linux.tar.gz";
     sha256 = "106qp9k1lnbxl7pich4i7bqj9gw8v895i3gp58dgcibgz4q8hymw";
   };
 
