@@ -1,37 +1,34 @@
 { pkgs ? import <nixpkgs> {} }:
+  pkgs.stdenv.mkDerivation rec {
+    pname = "purty";
+    version = "7.0.0";
 
-pkgs.stdenv.mkDerivation rec {
-  pname = "purty";
+    src = pkgs.fetchurl {
+      url = "https://registry.npmjs.org/purty/-/purty-${version}.tgz";
+      sha256 = "1h9z43aj1gflysy0379j7cpdvszjlk9lvg861hgk7dmqq59qzd4y";
+    };
 
-  version = "7.0.0";
+    binPath = if pkgs.stdenv.isDarwin
+      then
+        "package/bin/osx/purty"
+      else
+        "package/bin/linux/purty";
 
-  src = if pkgs.stdenv.isDarwin
-  then pkgs.fetchurl {
-    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-7.0.0-osx.tar.gz";
-    sha256 = "0ci72ijx6m43fy61cwkkyxp4prxhwrrnbh5myr3sva97cqvm6bj8";
-  }
-  else pkgs.fetchurl {
-    url = "https://bintray.com/joneshf/generic/download_file?file_path=purty-7.0.0-linux.tar.gz";
-    sha256 = "17fzdfiws4wmhbj2q5mf5cadbsnp7ag2bf12y3awfvvmajh5ddjh";
-  };
+    buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
 
-  buildInputs = [ pkgs.zlib pkgs.gmp pkgs.ncurses5 ];
+    libPath = pkgs.lib.makeLibraryPath buildInputs;
 
-  libPath = pkgs.lib.makeLibraryPath buildInputs;
+    dontStrip = true;
 
-  dontStrip = true;
+    unpackPhase = ''
+      tar xf $src
+    '';
 
-  unpackPhase = ''
-    tar xf $src
-  '';
-
-  installPhase = ''
-    mkdir -p $out/bin
-    PURTY="$out/bin/purty"
-
-    install -D -m555 -T purty $PURTY
-
-    mkdir -p $out/etc/bash_completion.d/
-    $PURTY --bash-completion-script $PURTY > $out/etc/bash_completion.d/purty-completion.bash
-  '';
+    installPhase = ''
+      mkdir -p $out/bin
+      PURTY="$out/bin/purty"
+      install -D -m555 -T $binPath $PURTY
+      mkdir -p $out/etc/bash_completion.d/
+      $PURTY --bash-completion-script $PURTY > $out/etc/bash_completion.d/purty-completion.bash
+    '';
 }
