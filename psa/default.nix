@@ -1,6 +1,4 @@
-{ pkgs ? import <nixpkgs> {
-    inherit system;
-  }
+{ pkgs ? import <nixpkgs> { inherit system; }
 , system ? builtins.currentSystem
 , nodejs ? pkgs."nodejs-12_x"
 }:
@@ -12,11 +10,10 @@ let
     libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 
-  nodePackage = import ./node-packages.nix
-    {
-      inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
-      inherit nodeEnv;
-    };
+  nodePackage = import ./node-packages.nix {
+    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
+    inherit nodeEnv;
+  };
 
   source = nodePackage.sources."purescript-psa-0.8.2".src;
 in
