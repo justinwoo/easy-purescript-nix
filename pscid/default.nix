@@ -1,25 +1,20 @@
-{ pkgs ? import <nixpkgs> {
-    inherit system;
-  }
+{ pkgs ? import <nixpkgs> { inherit system; }
 , system ? builtins.currentSystem
 , nodejs ? pkgs."nodejs-12_x"
 }:
+
 let
   nodeEnv = import ./node-env.nix {
-    inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
-    inherit nodejs;
+    inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
+    inherit pkgs nodejs;
     libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 
-  args = (import ./node-packages.nix {
-    inherit (pkgs) fetchurl fetchgit;
+  nodePackage = import ./node-packages.nix {
+    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
     inherit nodeEnv;
-  }
-  ).args;
-
-  npmPackage = builtins.fetchTarball {
-    url = "https://registry.npmjs.org/pscid/-/pscid-2.9.3.tgz";
-    sha256 = "1vzpi43l5h85j1am4qhxqmzx3rkpa1527jdzgcys7ixhsxs349my";
   };
+
+  source = nodePackage.sources."pscid-2.9.3".src;
 in
-nodeEnv.buildNodePackage (args // { src = npmPackage; })
+nodeEnv.buildNodePackage (nodePackage.args // { src = source; })
