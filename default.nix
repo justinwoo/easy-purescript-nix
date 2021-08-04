@@ -100,6 +100,10 @@ let
       inherit pkgs;
     };
 
+    purescript-language-server = import ./purescript-language-server {
+      inherit pkgs;
+    };
+
     purty = import ./purty.nix {
       inherit pkgs;
     };
