@@ -28,6 +28,9 @@ spago2nix
 which pscid
 pscid --version
 
+which purs-tidy
+purs-tidy --version
+
 which purty
 purty --help
 
