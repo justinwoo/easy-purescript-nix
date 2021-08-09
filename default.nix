@@ -84,6 +84,10 @@ let
       inherit pkgs;
     };
 
+    purs-tidy = import ./purs-tidy {
+      inherit pkgs purs;
+    };
+
     psa = import ./psa {
       inherit pkgs;
     };
