@@ -703,11 +703,11 @@ let
 
     "purescript-language-cst-parser" = pkgs.stdenv.mkDerivation {
         name = "purescript-language-cst-parser";
-        version = "v0.8.2";
+        version = "v0.9.0";
         src = pkgs.fetchgit {
           url = "https://github.com/natefaubion/purescript-language-cst-parser.git";
-          rev = "2b3c78a8af318df29570e354116db8de7fce9ad8";
-          sha256 = "0w7ismqjxh874z1c3glsa6miq9ymwhhwaqiwgfsbx3wa5l5kf5s3";
+          rev = "0b2410c25f638dcf00089c206d9e4af65f5845d0";
+          sha256 = "06p19y730q9c1lv4zyrgzana2fjzgy3mks6sk59k0xvmqr9srfmv";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";

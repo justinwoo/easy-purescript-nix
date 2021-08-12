@@ -14,12 +14,12 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "purs-tidy";
-  version = "0.3.1";
+  version = "0.3.3";
 
   src = pkgs.fetchgit {
     url = "https://github.com/natefaubion/purescript-tidy.git";
     rev = "v${version}";
-    sha256 = "sha256-1woVnlv+7e3REHFdEHyRNxb5RsoSUHiI+JnnBl24BqQ=";
+    sha256 = "sha256-rbA57+/5+g/BU13JysZZwpRqPXbI+RRdGgpplD2BNsA=";
   };
 
   buildInputs = [ nodejs ];
