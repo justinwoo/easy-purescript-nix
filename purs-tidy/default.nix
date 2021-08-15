@@ -1,6 +1,8 @@
 { pkgs ? import <nixpkgs> { inherit system; }
 , system ? builtins.currentSystem
+  # node: >=14
 , nodejs ? pkgs.nodejs
+  # purs: ~0.14.3
 , purs ? (import ../default.nix { inherit pkgs; }).purs-0_14_3
 }:
 
@@ -14,12 +16,12 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "purs-tidy";
-  version = "0.4.0";
+  version = "0.4.1";
 
   src = pkgs.fetchgit {
     url = "https://github.com/natefaubion/purescript-tidy.git";
     rev = "v${version}";
-    sha256 = "sha256-B+bhH2SovdibRPAtwfDkpw203/h0bL9r9Lvz/7jY4sU=";
+    sha256 = "sha256-WvJyZwRsGy28kYHrTTSZQiZJEpONFiLem8n4rUETqYQ=";
   };
 
   buildInputs = [ nodejs ];
