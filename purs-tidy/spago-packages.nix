@@ -67,11 +67,11 @@ let
 
     "arraybuffer-types" = pkgs.stdenv.mkDerivation {
         name = "arraybuffer-types";
-        version = "v3.0.0";
+        version = "v3.0.1";
         src = pkgs.fetchgit {
           url = "https://github.com/purescript-contrib/purescript-arraybuffer-types.git";
-          rev = "c15bd045c847a401531aab32c3e60ce94f2c5227";
-          sha256 = "19dh4k3n1lr8hbj15ivkiv1886s1q7brl9hic6zrkrr2rx1bz69r";
+          rev = "48cd7f4887791db1d9c2daf5fd98b62ba00e15bd";
+          sha256 = "09r6bhsiq9iqdsjf9p8m3p31qkszsipsafvy836mfdi8af6h5fv6";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";
