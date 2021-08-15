@@ -199,11 +199,11 @@ let
 
     "dodo-printer" = pkgs.stdenv.mkDerivation {
         name = "dodo-printer";
-        version = "v2.0.0";
+        version = "v2.1.0";
         src = pkgs.fetchgit {
           url = "https://github.com/natefaubion/purescript-dodo-printer.git";
-          rev = "81264c9815251fc94ca74122cbafd732011edf7b";
-          sha256 = "1qqaaqqzziaq1xqfy3h57ls4dl8kax7rsb3vc74if86n33fpsa0n";
+          rev = "540dba0442abe686c0b211868d6f423e5df81b69";
+          sha256 = "0d95dinb821vjmx891f3qaxsdnwrwzahglam11f8wrr6mcxsrqvw";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";
