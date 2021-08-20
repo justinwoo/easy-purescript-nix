@@ -7,21 +7,25 @@
 }:
 
 let
-  # one should be able to regenarate using process substitution
+  # one should be able to regenarate using process substitution, but spago 
+  # issue #472
   # ```fish
   # spago2nix generate 4 -- \
   #   --config (echo "https://raw.githubusercontent.com/natefaubion/purescript-tidy/v${version}/bin/spago.dhall" | psub)
   # ```
+  # but you can create a temp file with the echo’d URL for spago2nix and spago 
+  # to call
   spagoPkgs = import ./spago-packages.nix { inherit pkgs; };
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "purs-tidy";
-  version = "0.4.1";
+  version = "0.4.2";
 
-  src = pkgs.fetchgit {
-    url = "https://github.com/natefaubion/purescript-tidy.git";
+  src = pkgs.fetchFromGitHub {
+    owner = "natefaubion";
+    repo = "purescript-tidy";
     rev = "v${version}";
-    sha256 = "sha256-WvJyZwRsGy28kYHrTTSZQiZJEpONFiLem8n4rUETqYQ=";
+    sha256 = "sha256-GmsCiB+RIqqh2BFY2YXvmoOiCzrGYdJ2RmRlfHv8zD8=";
   };
 
   buildInputs = [ nodejs ];
@@ -45,7 +49,6 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   buildPhase = ''
-    ls -a
     build-spago-style "./src/**/*.purs" "./bin/**/*.purs"
   '';
 
