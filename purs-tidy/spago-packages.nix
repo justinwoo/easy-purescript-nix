@@ -547,11 +547,11 @@ let
 
     "node-workerbees" = pkgs.stdenv.mkDerivation {
         name = "node-workerbees";
-        version = "v0.1.2";
+        version = "v0.2.1";
         src = pkgs.fetchgit {
           url = "https://github.com/natefaubion/purescript-node-workerbees.git";
-          rev = "5ab52953b64f05b97e8605755708e483c3c44722";
-          sha256 = "1flv690spzb5xacvjc4dp941l9dgz3qa28wv0fpvwsrff09zfwwj";
+          rev = "6b688b79920920fe0b3df418bf227f75f373c54e";
+          sha256 = "1vkx9y0fyqvqfbkgdrxphhja71g282p38yrnfh39jznf3141610j";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";
