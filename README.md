@@ -28,7 +28,7 @@ $ nix-env -f default.nix -iA purs
 
 $ which purs
 /home/justin/.nix-profile/bin/purs
-> purs --version
+$ purs --version
 0.14.4
 ```
 
@@ -41,15 +41,15 @@ let
     (pkgs.fetchFromGitHub {
       owner = "justinwoo";
       repo = "easy-purescript-nix";
-      rev = "a5fd0328827ac46954db08f624c09eba981f1ab2";
-      sha256 = "1g3bk2y8hz0y998yixz3jmvh553kjpj2k7j0xrp4al1jrbdcmgjq";
+      rev = "5716cd791c999b3246b4fe173276b42c50afdd8d";
+      sha256 = "1r9lx4xhr42znmwb2x2pzah920klbjbjcivp2f0pnka7djvd2adq";
     }) {
     inherit pkgs;
   };
 in
 pkgs.mkShell {
   buildInputs = [
-    easy-ps.purs-0_13_8
+    easy-ps.purs-0_14_4
     easy-ps.psc-package
   ];
 }
