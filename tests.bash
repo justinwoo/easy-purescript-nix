@@ -29,7 +29,7 @@ which pscid
 pscid --version
 
 which purescript-language-server
-# purescript-language-server --version
+purescript-language-server --version
 
 which purs-tidy
 purs-tidy --version
