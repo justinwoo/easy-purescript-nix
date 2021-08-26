@@ -499,11 +499,11 @@ let
 
     "node-glob-basic" = pkgs.stdenv.mkDerivation {
         name = "node-glob-basic";
-        version = "v1.2.0";
+        version = "v1.2.2";
         src = pkgs.fetchgit {
           url = "https://github.com/natefaubion/purescript-node-glob-basic.git";
-          rev = "22b374b30537a945310fb8049f5bce1b51a7a669";
-          sha256 = "1f40igxwjvf5fs2qbpy4zcx7c5rpdqx6xq9fj4k96niai3biz7j3";
+          rev = "d20f2866c3bb472c68848be5b153e28933c07a38";
+          sha256 = "1pfggiqjizh7p30wq9ap0jw08szqmvin1wbbxpf1272qdg4ihlyq";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";
@@ -703,11 +703,11 @@ let
 
     "purescript-language-cst-parser" = pkgs.stdenv.mkDerivation {
         name = "purescript-language-cst-parser";
-        version = "v0.9.0";
+        version = "v0.9.2";
         src = pkgs.fetchgit {
           url = "https://github.com/natefaubion/purescript-language-cst-parser.git";
-          rev = "0b2410c25f638dcf00089c206d9e4af65f5845d0";
-          sha256 = "06p19y730q9c1lv4zyrgzana2fjzgy3mks6sk59k0xvmqr9srfmv";
+          rev = "bb36765e325a4ef5368ce5b7dcbb8cb7ed03affa";
+          sha256 = "11m40fflgpar416sa1ni9dwd5yk9g1hl2ghhyk3fa2mkjjk0ncnz";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";
