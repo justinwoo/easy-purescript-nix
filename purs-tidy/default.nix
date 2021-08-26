@@ -1,61 +1,22 @@
 { pkgs ? import <nixpkgs> { inherit system; }
 , system ? builtins.currentSystem
-  # node: >=14
-, nodejs ? pkgs.nodejs
-  # purs: ~0.14
-, purs ? (import ../default.nix { inherit pkgs; }).purs-0_14_4
+, nodejs ? pkgs."nodejs-12_x"
 }:
 
 let
-  # one should be able to regenarate using process substitution, but spago 
-  # issue #472
-  # ```fish
-  # spago2nix generate 4 -- \
-  #   --config (echo "https://raw.githubusercontent.com/natefaubion/purescript-tidy/v${version}/bin/spago.dhall" | psub)
-  # ```
-  # but you can create a temp file with the echo’d URL for spago2nix and spago 
-  # to call
-  spagoPkgs = import ./spago-packages.nix { inherit pkgs; };
-in
-pkgs.stdenv.mkDerivation rec {
-  pname = "purs-tidy";
-  version = "0.4.6";
+  version = "0.5.1";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "natefaubion";
-    repo = "purescript-tidy";
-    rev = "v${version}";
-    sha256 = "sha256-hTgVWX5nEb1WcYJ+GFwQQrDrYtBNXsk8iZsnAY4H3eQ=";
+  nodeEnv = import ./node-env.nix {
+    inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
+    inherit pkgs nodejs;
+    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 
-  buildInputs = [ nodejs ];
-  nativeBuildInputs = [
-    spagoPkgs.installSpagoStyle
-    spagoPkgs.buildSpagoStyle
-    spagoPkgs.buildFromNixStore
-    purs
-  ];
+  nodePackage = import ./node-packages.nix {
+    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
+    inherit nodeEnv;
+  };
 
-  # this allows us to drop the package.json file all together
-  patchPhase = ''
-    substituteInPlace bin/Bin/Version.js \
-      --replace 'require("../../package.json").version' '"${version}"';
-  '';
-
-  unpackPhase = ''
-    cp $src/{packages,spago}.dhall .
-    cp -r $src/bin $src/src .
-    install-spago-style
-  '';
-
-  buildPhase = ''
-    build-spago-style "./src/**/*.purs" "./bin/**/*.purs"
-  '';
-
-  installPhase = ''
-    mkdir -p $out/{bin,output}
-    cp -r output/ $out
-    cp $src/bin/index.js $out/bin/purs-tidy
-    chmod u+x $out/bin/purs-tidy
-  '';
-}
+  source = nodePackage.sources."purs-tidy-${version}".src;
+in
+nodeEnv.buildNodePackage (nodePackage.args // { src = source; })
