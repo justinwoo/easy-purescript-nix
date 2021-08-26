@@ -6,7 +6,7 @@ A project for using PureScript and related tooling easily with Nix. Note that th
 
 See [ci.nix](./ci.nix) in this repo for a Nix expression example to be used with `nix-shell`.
 
-```text
+```console
 $ nix-shell ./ci.nix
 ```
 
@@ -22,14 +22,14 @@ I have written about how to use parts of Nix here: <https://github.com/justinwoo
 
 Behold:
 
-```
-> nix-env -f default.nix -iA purs
-# or nix-env -if purs.nix
+```console
+$ nix-env -f default.nix -iA purs
+  # or nix-env -if purs.nix
 
-> which purs
+$ which purs
 /home/justin/.nix-profile/bin/purs
 > purs --version
-0.13.8
+0.14.4
 ```
 
 Or by `shell.nix`:
