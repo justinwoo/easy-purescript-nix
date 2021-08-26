@@ -4,6 +4,8 @@
 }:
 
 let
+  version = "0.15.4";
+
   nodeEnv = import ./node-env.nix {
     inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
     inherit pkgs nodejs;
@@ -15,6 +17,6 @@ let
     inherit nodeEnv;
   };
 
-  source = nodePackage.sources."purescript-language-server-0.15.2".src;
+  source = nodePackage.sources."purescript-language-server-${version}".src;
 in
 nodeEnv.buildNodePackage (nodePackage.args // { src = source; })
