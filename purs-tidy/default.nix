@@ -2,8 +2,8 @@
 , system ? builtins.currentSystem
   # node: >=14
 , nodejs ? pkgs.nodejs
-  # purs: ~0.14.3
-, purs ? (import ../default.nix { inherit pkgs; }).purs-0_14_3
+  # purs: ~0.14
+, purs ? (import ../default.nix { inherit pkgs; }).purs-0_14_4
 }:
 
 let
@@ -19,13 +19,13 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "purs-tidy";
-  version = "0.4.2";
+  version = "0.4.6";
 
   src = pkgs.fetchFromGitHub {
     owner = "natefaubion";
     repo = "purescript-tidy";
     rev = "v${version}";
-    sha256 = "sha256-GmsCiB+RIqqh2BFY2YXvmoOiCzrGYdJ2RmRlfHv8zD8=";
+    sha256 = "sha256-hTgVWX5nEb1WcYJ+GFwQQrDrYtBNXsk8iZsnAY4H3eQ=";
   };
 
   buildInputs = [ nodejs ];
