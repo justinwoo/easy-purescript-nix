@@ -4,7 +4,7 @@
 }:
 
 let
-  version = "0.5.1";
+  version = "0.5.3";
 
   nodeEnv = import ./node-env.nix {
     inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
