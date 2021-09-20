@@ -13,13 +13,13 @@ let
         sha1 = "e8fbf374dc556ff8947a10dcb0572d633f2cfa10";
       };
     };
-    "purescript-language-server-0.15.5" = {
+    "purescript-language-server-0.15.7" = {
       name = "purescript-language-server";
       packageName = "purescript-language-server";
-      version = "0.15.5";
+      version = "0.15.7";
       src = fetchurl {
-        url = "https://registry.npmjs.org/purescript-language-server/-/purescript-language-server-0.15.5.tgz";
-        sha512 = "Km6LOus92Rab315/OhnILwslCseXbl8s53m0T8te0SYeYgNfUnxVh4/m/r217PAApicemaT3ZMdnXrtAZJ5U6Q==";
+        url = "https://registry.npmjs.org/purescript-language-server/-/purescript-language-server-0.15.7.tgz";
+        sha512 = "bl62M0n/fAq/ZWvyZD2Wpxlg5A9I0zyCnAvqdRsS052gbGlbyRmzJJz2kT2NexfZvubZT5EYTsENKI/zewUvuw==";
       };
     };
     "shell-quote-1.7.2" = {
@@ -38,6 +38,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz";
         sha512 = "HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==";
+      };
+    };
+    "vscode-jsonrpc-5.0.1" = {
+      name = "vscode-jsonrpc";
+      packageName = "vscode-jsonrpc";
+      version = "5.0.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/vscode-jsonrpc/-/vscode-jsonrpc-5.0.1.tgz";
+        sha512 = "JvONPptw3GAQGXlVV2utDcHx0BiY34FupW/kI6mZ5x06ER5DdPG/tXWMVHjTNULF5uKPOUUD0SaXg5QaubJL0A==";
       };
     };
     "vscode-jsonrpc-6.0.0" = {
@@ -107,16 +116,20 @@ let
   args = {
     name = "purescript-language-server";
     packageName = "purescript-language-server";
-    version = "0.15.5";
+    version = "0.15.7";
     src = ./.;
     dependencies = [
       sources."isexe-2.0.0"
-      sources."purescript-language-server-0.15.5"
+      sources."purescript-language-server-0.15.7"
       sources."shell-quote-1.7.2"
       sources."uuid-3.4.0"
-      sources."vscode-jsonrpc-6.0.0"
+      sources."vscode-jsonrpc-5.0.1"
       sources."vscode-languageserver-6.1.1"
-      sources."vscode-languageserver-protocol-3.16.0"
+      (sources."vscode-languageserver-protocol-3.16.0" // {
+        dependencies = [
+          sources."vscode-jsonrpc-6.0.0"
+        ];
+      })
       sources."vscode-languageserver-textdocument-1.0.1"
       sources."vscode-languageserver-types-3.16.0"
       sources."vscode-uri-2.1.2"
