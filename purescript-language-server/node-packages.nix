@@ -13,13 +13,13 @@ let
         sha1 = "e8fbf374dc556ff8947a10dcb0572d633f2cfa10";
       };
     };
-    "purescript-language-server-0.16.0" = {
+    "purescript-language-server-0.16.1" = {
       name = "purescript-language-server";
       packageName = "purescript-language-server";
-      version = "0.16.0";
+      version = "0.16.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/purescript-language-server/-/purescript-language-server-0.16.0.tgz";
-        sha512 = "G+Ky8G6TZKnRsuSl8U9yozo4A/2nnn5pOupf/qTbvJ70XWOS8lwr48ALzkWivwJ+qQd4EoIjUGx7GFq/PQjiGQ==";
+        url = "https://registry.npmjs.org/purescript-language-server/-/purescript-language-server-0.16.1.tgz";
+        sha512 = "TX18OnuIZYDySoYxENH7dTQmjwewyoSt8x4chQcLd/zZjgYyiJCr7rDs7LP7Z8bse3iyvQte+HS1OoEIQnauqw==";
       };
     };
     "shell-quote-1.7.3" = {
@@ -107,11 +107,11 @@ let
   args = {
     name = "purescript-language-server";
     packageName = "purescript-language-server";
-    version = "0.16.0";
+    version = "0.16.1";
     src = ./.;
     dependencies = [
       sources."isexe-2.0.0"
-      sources."purescript-language-server-0.16.0"
+      sources."purescript-language-server-0.16.1"
       sources."shell-quote-1.7.3"
       sources."uuid-3.4.0"
       sources."vscode-jsonrpc-8.0.0-next.4"
