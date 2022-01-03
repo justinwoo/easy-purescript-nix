@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }
+, nodejs ? pkgs."nodejs-14_x"
+}:
 
 import
   (
@@ -10,5 +12,5 @@ import
     }
   )
 {
-  inherit pkgs;
+  inherit pkgs nodejs;
 }
