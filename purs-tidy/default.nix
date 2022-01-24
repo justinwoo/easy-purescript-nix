@@ -1,10 +1,10 @@
 { pkgs ? import <nixpkgs> { inherit system; }
 , system ? builtins.currentSystem
-, nodejs ? pkgs."nodejs-12_x"
+, nodejs ? pkgs."nodejs-14_x"
 }:
 
 let
-  version = "0.6.4";
+  version = "0.7.0";
 
   nodeEnv = import ./node-env.nix {
     inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
