@@ -4,23 +4,23 @@
 
 let
   sources = {
-    "purs-tidy-0.7.0" = {
+    "purs-tidy-0.7.1" = {
       name = "purs-tidy";
       packageName = "purs-tidy";
-      version = "0.7.0";
+      version = "0.7.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/purs-tidy/-/purs-tidy-0.7.0.tgz";
-        sha512 = "Fjg0JBvHSdgf7BKiJfAJSBsC9M65K8aqFKgnEpbGbul1SLzQKg1KBw+HBCWh07gxdIZC+iMrpFDfI6UbenbrZA==";
+        url = "https://registry.npmjs.org/purs-tidy/-/purs-tidy-0.7.1.tgz";
+        sha512 = "DUsRQsP2nrdf3zXwojaySw0lhybv8dxNxjRRgshm0JFDvdzgprD7FBVItkItaStM2X3dN+Os3UTG7uGxgB8XIw==";
       };
     };
   };
   args = {
     name = "purs-tidy";
     packageName = "purs-tidy";
-    version = "0.7.0";
+    version = "0.7.1";
     src = ./.;
     dependencies = [
-      sources."purs-tidy-0.7.0"
+      sources."purs-tidy-0.7.1"
     ];
     buildInputs = globalBuildInputs;
     meta = {
