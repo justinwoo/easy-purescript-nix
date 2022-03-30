@@ -116,9 +116,11 @@ let
       inherit pkgs;
     };
 
-    pulp = import ./pulp {
-      inherit pkgs;
-    };
+    pulp-15_0_0 = import ./pulp/15.0.0 { inherit pkgs; };
+
+    pulp-16_0_0-0 = import ./pulp/16.0.0-0 { inherit pkgs; };
+
+    pulp = pulp-15_0_0;
 
     purescript-language-server = import ./purescript-language-server {
       inherit pkgs;
