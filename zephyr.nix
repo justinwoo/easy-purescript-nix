@@ -1,21 +1,24 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 pkgs.stdenv.mkDerivation rec {
   pname = "zephyr";
 
-  version = "0.3.2";
+  version = "0.4.0";
 
-  src = if pkgs.stdenv.isDarwin
-  then pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v${version}/macOS.tar.gz";
-    sha256 = "1zj2fq664akqfmczmcshg9bxlrsa2gj082bp92nkygsq6v677jk4";
-  }
-  else pkgs.fetchurl {
-    url = "https://github.com/coot/zephyr/releases/download/v${version}/Linux.tar.gz";
-    sha256 = "106qp9k1lnbxl7pich4i7bqj9gw8v895i3gp58dgcibgz4q8hymw";
-  };
+  src =
+    if pkgs.stdenv.isDarwin then
+      pkgs.fetchurl
+        {
+          url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/macOS.tar.gz";
+          sha256 = "1di4zk75pw0g2hk2zq61v7msvq2ibd9wxnk21nz26fxqw09gxacd";
+        }
+    else
+      pkgs.fetchurl {
+        url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/Linux.tar.gz";
+        sha256 = "002rlf9s81il5x3adv7qhj0wxbnvv348l5rcllkrbivk008bb83x";
+      };
 
-  nativeBuildInputs = []
+  nativeBuildInputs = [ ]
     ++ pkgs.lib.optional pkgs.stdenv.isDarwin pkgs.fixDarwinDylibNames;
 
   buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
