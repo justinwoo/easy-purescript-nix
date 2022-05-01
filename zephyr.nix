@@ -21,7 +21,12 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = [ ]
     ++ pkgs.lib.optional pkgs.stdenv.isDarwin pkgs.fixDarwinDylibNames;
 
-  buildInputs = [ pkgs.gmp pkgs.zlib pkgs.ncurses5 ];
+  buildInputs = [
+    pkgs.stdenv.cc.cc.lib
+    pkgs.gmp
+    pkgs.zlib
+    pkgs.ncurses6
+  ];
 
   libPath = pkgs.lib.makeLibraryPath buildInputs;
 
