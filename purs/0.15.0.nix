@@ -16,15 +16,7 @@ let
         sha256 = "1ygp6wvbgl3y15wq1q41j9kg2ndaxr32rpgbzfzyd9zb8n9z8lpx";
       };
 
-  # Temporary fix for https://github.com/justinwoo/easy-purescript-nix/issues/188
-  pkgs_ncurses = pkgs.extend (self: super: {
-    ncurses5 = super.ncurses5.overrideAttrs (attr: {
-      configureFlags = attr.configureFlags ++ [ "--with-versioned-syms" ];
-    });
-  });
-
 in
 import ./mkPursDerivation.nix {
-  inherit version src;
-  pkgs = pkgs_ncurses;
+  inherit pkgs version src;
 }
