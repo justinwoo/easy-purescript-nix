@@ -14,6 +14,10 @@ let
       inherit pkgs;
     };
 
+    purs-0_14_9 = import ./purs/0.14.9.nix {
+      inherit pkgs;
+    };
+
     purs-0_14_7 = import ./purs/0.14.7.nix {
       inherit pkgs;
     };
