@@ -143,6 +143,8 @@ let
 
     pulp = pulp-16_0_2;
 
+    pulp-latest = import ./pulp/latest { inherit pkgs; };
+
     purescript-language-server = import ./purescript-language-server {
       inherit pkgs;
     };
