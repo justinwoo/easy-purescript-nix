@@ -148,6 +148,10 @@ let
     purty = import ./purty.nix {
       inherit pkgs;
     };
+
+    purs-backend-es-1_1_0 = import ./purs-backend-es/1.1.0 { inherit pkgs; };
+
+    purs-backend-es = purs-backend-es-1_1_0;
   };
 
   buildInputs = builtins.attrValues inputs;
