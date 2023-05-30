@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> { }
-, nodejs ? pkgs."nodejs-14_x"
+, nodejs ? pkgs."nodejs-18_x"
 }:
 
 import
