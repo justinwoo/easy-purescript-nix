@@ -55,6 +55,66 @@ pkgs.mkShell {
 }
 ```
 
+## Nix Flakes
+
+There is a `flake.nix`. To see what the `flake.nix` provides,
+
+```
+nix flake show github:justinwoo/easy-purescript-nix --allow-import-from-derivation
+```
+
+### Deluxe `nix develop` shell
+
+To get a deluxe PureScript development shell which includes the latest
+versions of everything,
+
+```
+nix develop github:justinwoo/easy-purescript-nix#deluxe
+```
+
+### Custom `nix develop` shell
+
+Create a custom `nix develop` shell with a `flake.nix` like this for example:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    flake-utils.url = "github:numtide/flake-utils";
+    easy-purescript-nix.url = "github:justinwoo/easy-purescript-nix";
+  };
+
+  outputs = { nixpkgs, flake-utils, easy-purescript-nix, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        easy-ps = easy-purescript-nix.packages.${system};
+      in
+      {
+        devShells = {
+          default = pkgs.mkShell {
+            name = "purescript-custom-shell";
+            buildInputs = [
+              easy-ps.purs-0_15_8
+              easy-ps.spago
+              easy-ps.purescript-language-server
+              easy-ps.purs-tidy
+              pkgs.nodejs-18_x
+              pkgs.esbuild
+            ];
+          shellHook = ''
+            source <(spago --bash-completion-script `which spago`)
+            source <(node --completion-bash)
+            '';
+          };
+       };
+     }
+  );
+}
+```
+
+
+
 ## Why was this made?
 
 See the blog post about this here: <https://github.com/justinwoo/my-blog-posts/blob/master/posts/2018-10-24-using-purescript-easily-with-nix.md>

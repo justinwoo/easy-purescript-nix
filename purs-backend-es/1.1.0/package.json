@@ -1,7 +1,0 @@
-{
-  "name": "purs-backend-es",
-  "version": "v1.1.0",
-  "dependencies": {
-    "purs-backend-es":"v1.1.0"
-  }
-}

@@ -1,22 +1,7 @@
-{ pkgs ? import <nixpkgs> { inherit system; }
-, system ? builtins.currentSystem
-, nodejs ? pkgs."nodejs-14_x"
-}:
+# How to generate the files in this directory:
+#
+#     nix run nixpkgs#node2nix -- -i <(echo '["purescript-language-server"]') -c composition.nix -18
+#
+{ pkgs ? import <nixpkgs> { } }:
 
-let
-  version = "0.16.6";
-
-  nodeEnv = import ./node-env.nix {
-    inherit (pkgs) stdenv lib python2 runCommand writeTextFile;
-    inherit pkgs nodejs;
-    libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
-  };
-
-  nodePackage = import ./node-packages.nix {
-    inherit (pkgs) fetchurl nix-gitignore stdenv lib fetchgit;
-    inherit nodeEnv;
-  };
-
-  source = nodePackage.sources."purescript-language-server-${version}".src;
-in
-nodeEnv.buildNodePackage (nodePackage.args // { src = source; })
+(import ./composition.nix { inherit pkgs; }).purescript-language-server

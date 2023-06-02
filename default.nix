@@ -146,15 +146,7 @@ let
       inherit pkgs;
     };
 
-    pulp-15_0_0 = import ./pulp/15.0.0 { inherit pkgs; };
-
-    pulp-16_0_0-0 = import ./pulp/16.0.0-0 { inherit pkgs; };
-
-    pulp-16_0_2 = import ./pulp/16.0.2 { inherit pkgs; };
-
-    pulp = pulp-16_0_2;
-
-    pulp-latest = import ./pulp/latest { inherit pkgs; };
+    pulp = import ./pulp { inherit pkgs; };
 
     purescript-language-server = import ./purescript-language-server {
       inherit pkgs;
@@ -164,9 +156,8 @@ let
       inherit pkgs;
     };
 
-    purs-backend-es-1_1_0 = import ./purs-backend-es/1.1.0 { inherit pkgs; };
+    purs-backend-es = import ./purs-backend-es { inherit pkgs; };
 
-    purs-backend-es = purs-backend-es-1_1_0;
   };
 
   buildInputs = builtins.attrValues inputs;

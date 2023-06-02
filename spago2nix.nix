@@ -1,5 +1,5 @@
 { pkgs ? import <nixpkgs> { }
-, nodejs ? pkgs."nodejs-14_x"
+, nodejs ? pkgs."nodejs-18_x"
 }:
 
 import
@@ -7,8 +7,8 @@ import
     pkgs.fetchFromGitHub {
       owner = "justinwoo";
       repo = "spago2nix";
-      rev = "da4a833b53f9139e596f89ad89d892f4f60fc179";
-      sha256 = "sha256-oTBdCpCJmuMQ6nYR1+tamL9xDPm720dRVxsKtKOzTfs=";
+      rev = "1b8ec352bc7eac077b934d6b9f6efa0129926e59";
+      sha256 = "sha256-h9r67pmvDuA3TV9299L4CN60XSm8RRtX1EwUoKu9Pyw=";
     }
   )
 {
