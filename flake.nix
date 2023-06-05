@@ -18,7 +18,6 @@
                   pulp
                   psc-package
                   purp
-                  dhall-simple
                   spago
                   spago2nix
                   pscid
@@ -27,10 +26,10 @@
                   purty
                   zephyr
                   purs-backend-es
-                ] ++ [
                   pkgs.nodejs-18_x
                   pkgs.nodePackages.bower
                   pkgs.esbuild
+                  pkgs.dhall
                 ];
               shellHook = ''
                 source <(spago --bash-completion-script `which spago`)
