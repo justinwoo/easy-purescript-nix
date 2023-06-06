@@ -1,4 +1,11 @@
-{ inputs.flake-utils.url = "github:numtide/flake-utils";
+{
+  description = " Easy PureScript Nix";
+
+  nixConfig = { # https://github.com/NixOS/nix/pull/4189
+    allow-import-from-derivation = "true"; # TODO doesn't work? https://github.com/hasktorch/hasktorch/blob/7b63d730964a44a6bcdd853cd5b140a24e210298/flake.nix#L16
+  };
+
+  inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem
@@ -42,3 +49,4 @@
          }
       );
 }
+
