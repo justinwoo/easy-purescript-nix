@@ -530,15 +530,12 @@ let
         then
             ln -s $out/lib/node_modules/.bin $out/bin
 
-            # Fixup all executables
+            # Patch the shebang lines of all the executables
             ls $out/bin/* | while read i
             do
                 file="$(readlink -f "$i")"
                 chmod u+rwx "$file"
-                if isScript "$file"
-                then
-                    sed -i 's/\r$//' "$file"  # convert crlf to lf
-                fi
+                patchShebangs "$file"
             done
         fi
 
