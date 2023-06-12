@@ -60,8 +60,10 @@ pkgs.mkShell {
 There is a `flake.nix`. To see what the `flake.nix` provides,
 
 ```
-nix flake show github:justinwoo/easy-purescript-nix --allow-import-from-derivation
+nix flake show github:justinwoo/easy-purescript-nix
 ```
+
+You might need the flag `--allow-import-from-derivation` if you’re on an older version of Nix.
 
 ### Deluxe `nix develop` shell
 
@@ -112,7 +114,6 @@ Create a custom `nix develop` shell with a `flake.nix` like this for example:
   );
 }
 ```
-
 
 
 ## Why was this made?
