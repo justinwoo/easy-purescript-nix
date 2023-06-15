@@ -104,10 +104,10 @@ Create a custom `nix develop` shell with a `flake.nix` like this for example:
               pkgs.nodejs-18_x
               pkgs.esbuild
             ];
-          shellHook = ''
-            source <(spago --bash-completion-script `which spago`)
-            source <(node --completion-bash)
-            '';
+            shellHook = ''
+              source <(spago --bash-completion-script `which spago`)
+              source <(node --completion-bash)
+              '';
           };
        };
      }
