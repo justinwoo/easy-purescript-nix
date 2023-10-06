@@ -9,10 +9,10 @@ in
   purs-backend-es = nodeEnv.buildNodePackage {
     name = "purs-backend-es";
     packageName = "purs-backend-es";
-    version = "1.3.2";
+    version = "1.4.2";
     src = fetchurl {
-      url = "https://registry.npmjs.org/purs-backend-es/-/purs-backend-es-1.3.2.tgz";
-      sha512 = "ujfo3eb+fnLvNR9wpa0ep/grSAZMybZB4aibdzBYLrm6PjRGJP7sDg0Nw/zMOAeMOYXFJtzVlxNbrsWjzKxWqQ==";
+      url = "https://registry.npmjs.org/purs-backend-es/-/purs-backend-es-1.4.2.tgz";
+      sha512 = "S9Dxq0rb21eyjtiYKv3S2Hw6T2JE3/uyRSG82BV1/iiDhoQIaie5aKb5EvHhOjfWlbF3dK6b0TWXaePdjqTHuw==";
     };
     buildInputs = globalBuildInputs;
     meta = {
