@@ -30,7 +30,7 @@
                   purty
                   zephyr
                   purs-backend-es
-                  pkgs.nodejs-18_x
+                  pkgs.nodejs_20
                   pkgs.nodePackages.bower
                   pkgs.esbuild
                   pkgs.dhall
