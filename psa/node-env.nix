@@ -1,11 +1,8 @@
 # This file originates from node2nix
 
-{lib, stdenv, nodejs, python2, pkgs, libtool, runCommand, writeTextFile, writeShellScript}:
+{lib, stdenv, nodejs, python2, util-linux, libtool, runCommand, writeTextFile, writeShellScript}:
 
 let
-  # Workaround to cope with utillinux in Nixpkgs 20.09 and util-linux in Nixpkgs master
-  utillinux = if pkgs ? utillinux then pkgs.utillinux else pkgs.util-linux;
-
   python = if nodejs ? python then nodejs.python else python2;
 
   # Create a tar wrapper that filters all the 'Ignoring unknown extended header keyword' noise
@@ -499,7 +496,7 @@ let
     stdenv.mkDerivation ({
       name = "${name}${if version == null then "" else "-${version}"}";
       buildInputs = [ tarWrapper python nodejs ]
-        ++ lib.optional (stdenv.isLinux) utillinux
+        ++ lib.optional (stdenv.isLinux) util-linux
         ++ lib.optional (stdenv.isDarwin) libtool
         ++ buildInputs;
 
@@ -588,7 +585,7 @@ let
         name = "node-dependencies-${name}${if version == null then "" else "-${version}"}";
 
         buildInputs = [ tarWrapper python nodejs ]
-          ++ lib.optional (stdenv.isLinux) utillinux
+          ++ lib.optional (stdenv.isLinux) util-linux
           ++ lib.optional (stdenv.isDarwin) libtool
           ++ buildInputs;
 
@@ -659,7 +656,7 @@ let
     stdenv.mkDerivation ({
       name = "node-shell-${name}${if version == null then "" else "-${version}"}";
 
-      buildInputs = [ python nodejs ] ++ lib.optional (stdenv.isLinux) utillinux ++ buildInputs;
+      buildInputs = [ python nodejs ] ++ lib.optional (stdenv.isLinux) util-linux ++ buildInputs;
       buildCommand = ''
         mkdir -p $out/bin
         cat > $out/bin/shell <<EOF
