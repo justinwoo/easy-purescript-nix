@@ -3,18 +3,23 @@
 pkgs.stdenv.mkDerivation rec {
   pname = "zephyr";
 
-  version = "0.5.0";
+  version = "0.5.2";
 
   src =
     if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then
       (pkgs.fetchurl {
         url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/Linux.tar.gz";
-        sha256 = "1c44nddlx7hx097klfslhap717fkah20vgf1phsp0gj8imjyvr0h";
+        sha256 = "15gfifqxxzr3slgk5a3bwjq5zfxm0gabknzqhl72x69rl959lwwh";
       })
     else if pkgs.stdenv.hostPlatform.system == "x86_64-darwin" then
       (pkgs.fetchurl {
         url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/macOS.tar.gz";
-        sha256 = "1qpd0mwnvkxygby467cr0zwcrpwnv9f0s99g7w8hfz0zfcg358bg";
+        sha256 = "06y82s2r5w8gryr6r2a4cwqwk01lrqgcv1x6qzxijh0ssfv42z1x";
+      })
+    else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then
+      (pkgs.fetchurl {
+        url = "https://github.com/MaybeJustJames/zephyr/releases/download/v${version}/macOS.tar.gz";
+        sha256 = "06y82s2r5w8gryr6r2a4cwqwk01lrqgcv1x6qzxijh0ssfv42z1x";
       })
     else
       throw "Architecture not supported";
