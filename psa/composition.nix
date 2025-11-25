@@ -5,9 +5,8 @@
   }, system ? builtins.currentSystem, nodejs ? pkgs."nodejs_20"}:
 
 let
-  nodeEnv = import ./node-env.nix {
-    inherit (pkgs) stdenv lib python2 runCommand writeTextFile writeShellScript;
-    inherit pkgs nodejs;
+  nodeEnv = pkgs.callPackage ./node-env.nix {
+    inherit nodejs;
     libtool = if pkgs.stdenv.isDarwin then pkgs.darwin.cctools else null;
   };
 in
